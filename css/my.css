@@ -1,0 +1,449 @@
+  /* Общие стили */
+body {
+    background-color: #A5A5ff;
+    color: #385183;
+    font-family: verdana,arial,helvetica;
+    font-size: 8pt;
+    margin: 0px;
+}
+h1 {
+    font-size:14pt;
+}
+.prepods h3 {
+    display:inline-block;
+    margin:5px;
+}
+.alertMessage {
+    color: red;
+}
+#commBlock {
+    width: 80%;
+    display: block;
+    margin: 5px auto;
+}
+optgroup {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 9pt;
+}
+
+/* Заголовки и содержимое (общие свойства) */
+.title {
+    font-weight:bold;
+    color:black;
+    border:0px;
+    padding:2px;
+    font-size:10pt;
+    text-indent:2ex;
+    border-bottom:2px solid blue;
+    background-color:#DDD;
+}
+.title a {
+    text-decoration:none;
+}
+.content {
+    padding:5px;
+    background-color:#F0F0F5;
+    border-bottom:1px solid blue;
+}
+#vertMenu ul, #friendSites ul {
+    list-style-image: url('/img/arrow.png');
+    list-style-position: inside;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+.vBlock li {
+    padding-left: 2px;
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+.editlink {
+    font-size: 8pt;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.usersTable {
+    width:100%;
+}
+
+    /* Элементы формы */
+form {
+    padding: 5px;
+}
+.subjSelect {
+    width:100%; min-width: 60px;
+}
+select.longselect, input.longinput {
+    width:100%;
+}
+select.shortselect{
+    width:100%;
+}
+textarea {
+    height:100px; width:100%;
+}
+textarea.editPage {
+    height: 80ex;
+}
+textarea.high {
+    height:300px;
+}
+input,textarea,select {
+    font-family: verdana,arial,helvetica;
+    font-size: 8pt;
+    vertical-align: middle;
+}
+
+  /* Стили ссылок */
+a:link    {text-decoration:underline; color:#22229C;}
+a:active  {text-decoration:underline; color:#22229C;}
+a:visited {text-decoration:underline; color:#22229C;}
+a:hover   {text-decoration:underline; color:#FF4400;}
+
+/*input[type="text"] {width:100%;} */
+#addfileplease {
+    padding-top: 100px;
+    background-image: url('/img/addfile.png');
+    background-repeat: no-repeat;
+    text-align:center;
+}
+#addfileplease:hover {
+    background-image: url('/img/addfilehover.png');
+}
+#addfileplease:hover a {
+    color:#FF4400;
+}
+#addfileplease a {
+    text-decoration:none;
+}
+#mchatFrame{
+    height:300px;
+    overflow: auto;
+    width:100%;
+}
+.shortinput {
+    width:7ex;
+}
+.time {
+    font-size:8pt;
+    font-weight:normal;
+    color:gray;
+}
+#FilterForm {
+    display:none;
+}
+#slideFilterForm {
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: block;
+    font-size: 10pt;
+    height: 30px; width: 150px;
+    margin: 0px auto;
+    padding: 5px;
+    padding-left: 10px;
+    text-decoration: underline;
+}
+.slideFilterFormOpened {
+    background-image: url('/img/panelOpened.png');
+}
+.slideFilterFormClosed {
+    background-image: url('/img/panelClosed.png');
+}
+
+.optionsArrayTable {width:100%;border-collapse:collapse;}
+.optionsArrayTable td {border-bottom:1px solid blue;padding:5px;}
+.optionsArrayTable td:first-child {width:150px;}
+
+  /* Миничат */
+.mchatpost {border: 1px solid blue;margin:2px 0px;}
+.mchatpost .title2 {
+    border-bottom:1px dashed #A0A0A0;
+    padding-bottom:2px;
+}
+.mchatpost .content {border:none;}
+  /* Расписание */
+.schedule {min-height: inherit;}
+.schedule .title {font-size:10pt; font-weight:bold;}
+.schedule .content {min-height:inherit;}
+.scheduleWeekDay {
+    width:95%;
+    margin: 10px auto;
+    min-height: inherit;
+    border-collapse: collapse;
+}
+.scheduleWeekDay td {padding:3px 2px;border-bottom:1px solid #D0D0D0;border-top:1px solid #D0D0D0;min-height:30px;}
+.PrepodScheduleInner {width:90%;clear:both;margin:0px auto;}
+
+  /* Drag'n'Drop speciality */
+.tableSpec {
+    width: 100%;
+    margin: 0px auto;
+    border-collapse: collapse;
+}
+.tableSpec th {
+    background: #eed668 url('/img/subjTitle.png') repeat-x;
+    font-size: 10pt;
+    border-top:  1px solid black; border-bottom: 1px dashed blue;
+    border-left: 1px solid black; border-right:  1px solid black;
+}
+.specCurr {
+    border-left: 1px solid blue; border-right: 1px solid blue;
+    width: 45%;
+    padding: 5px;
+    vertical-align: top;
+}
+.subjAll {
+    border-left:1px solid blue;
+    border-right:1px solid blue;
+    width:45%;
+    padding:5px;
+    vertical-align:top;
+}
+
+  /* Минибаннеры */
+.minibanner {
+    text-align:center;
+}
+.minibanner img {
+    display:block;
+    border-width:0px;
+    margin:0px auto;
+}
+
+.titleLine {text-align:center;border:1px solid blue;border-bottom-width:0px;}
+.greatings {
+    font-size: 8pt;
+    text-align: left;
+    margin-left: 20px;
+}
+.textForGuest {
+    font-weight: bold;
+    font-size: 8pt;
+    margin: 10px;
+}
+
+  /* Стили текста */
+.textTable {border-collapse: collapse;}
+.textTable th {text-align:center;}
+.textTable td {padding:10px;border:1px solid #222266;vertical-align:top;text-align:justify;}
+.textOfPage {font-size:10pt;line-height:14pt;text-align:justify;margin:25px;} 
+/*background-image:url('/img/rubin.png');
+  background-repeat:no-repeat;*/
+.textOfPage p {
+    text-indent:5ex;
+}
+.textOfPage img {
+    margin: 10px;
+}
+
+  /* Параметры главной форматирующей таблицы */
+.mainTable {
+    width: 95%;
+    padding: 0px 0px;
+    margin: 0px auto;
+    border-spacing:10px;
+}
+.mframe {
+    background-color: #F0F0F0;
+    font-size: 8pt;
+    width: 100%;
+    vertical-align: top;
+    padding: 5px 15px;
+}
+#leftcolumn {
+    width:200px;
+    vertical-align:top;
+}
+#rightcolumn {
+    width:200px;
+    vertical-align:top;
+}
+
+  /* Page Selector*/
+.pageSelector {width:80%;text-align:center;padding:5px 0px;margin:5px auto;}
+.currentPage {color:black; font-weight:bold;}
+
+  /* Опросы */
+.voteNumber {
+    color:gray;
+    font-size:smaller;
+}
+#polls ul {
+    list-style:none;
+    margin-left:5px;
+    padding-left:0px;
+}
+
+  /* Стиль списка преподов */
+.prepods {}
+.prepods .title {font-weight:bold;font-size:12pt;}
+.prepods .content {
+    margin-bottom:20px;
+    margin-top:10px;
+    text-align:justify;
+    min-height:inherit;
+}
+.prepods img {float:right;margin:15px;margin-top:0px;}
+.prepods ul {list-style-position: inside;margin-left:5px;padding-left:5px;}
+
+/* Кафедры */
+.depts {margin-bottom:10px;}
+
+  /* Стиль списка предметов */
+.subject {margin-bottom:10px; }
+.delSubject, .applySubject {float:right;}
+.subject .title {}
+.subject .content {
+    border-bottom: 1px solid blue;
+    min-height: 60px;
+    padding: 3px;
+}
+.subject .content p {text-indent:2ex;}
+
+  /* Коммертарии */
+.commentsTitle {
+    font-size: 10pt;
+}
+.comments {
+    margin: 10px auto;
+    width: 80%;
+}
+.comments .title {}
+.comments .content {min-height:50px;}
+
+  /* Горизонтальное меню */
+.hMenuDiv {
+    background-image:url('/img/Menu/ForHorMenu.png');
+    background-repeat:repeat-x;
+    width: 95%;
+    text-align:left;
+    height:70px;
+    vertical-align:top;
+    margin: 0 auto;
+    padding:20px 30px 0px 30px;}
+.hMenuTable {
+    text-align:center;
+    border-width:0px;
+    padding:0px;
+    margin-left:20px;
+    border-collapse: collapse;
+}
+.hMenuLeft {
+    width:10px; height:30px;
+    background-image:url('/img/Menu/Left.png');
+    background-repeat: no-repeat;
+}
+.hMenuTd {
+    font-weight:bold;
+    width:120px; height:30px;
+    background-image:url('/img/Menu/Center.png');
+    text-align:center;
+    background-repeat: repeat-x;
+}
+.hMenuSeparator {
+    width:21px; height:30px;
+    background-image:url('/img/Menu/Separator.png');background-repeat: no-repeat;
+}
+.hMenuRight {
+    width:10px;
+    height:30px;
+    background-image:url('/img/Menu/Right.png');
+    background-repeat: no-repeat;
+}
+  /* Вид ссылок горизонтального меню */
+.hMenuTd a:link {text-decoration:none; color:#FFFFFF;}
+.hMenuTd a:active {text-decoration:none; color:#FFFFFF;}
+.hMenuTd a:visited {text-decoration:none; color:#FFFFFF;}
+.hMenuTd a:hover {
+    text-decoration:none;
+    color:#DF4400;
+}
+
+  /* Вертикальные блоки */
+.vBlock {
+    width:200px;
+    background-color:#F5F5FF;
+    margin-bottom:10px;
+    border-bottom:1px solid blue;
+}
+/* .vBlock .title {font-size:10pt;color:white;background-image:url('/img/Menu/menut0.png');height:30px;border:0px;padding:0px;text-indent:2ex;} */
+.vBlock .title {font-size:10pt;color:black;}
+.vBlock .content {}
+.vBlock li:hover {background-color:#D5D5EF;}
+.vBlock li a {text-decoration:none;}
+
+  /* Блоки материалов */
+.matBlock {
+    margin-bottom:10px;
+    width:100%;
+    background-color:#F5F5FF;
+}
+.matBlock .title {
+    padding:2px;
+    color:gray;
+    border-bottom:2px solid blue;
+    text-indent:3ex;
+}
+.matBlock .content {padding:5px;}
+.matBlock .Message {
+    text-align: left;
+    clear: both;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #F7F7FA
+}
+  /* Вид ссылок в заголовках */
+.matBlock .title a:link     {text-decoration:none; color:black;}
+.matBlock .title a:active   {text-decoration:none; color:black;}
+.matBlock .title a:visited  {text-decoration:none; color:black;}
+.matBlock .title a:hover    {text-decoration:none; color:#DF4400}
+
+.Details {
+    border-width: 0px;
+    clear: both;
+    color: #666666; background-color: #F0F0F5;
+    font-size: 7pt;
+    line-height: 12pt;
+    margin-bottom: 5px;
+    padding: 3px;
+    text-align: left;
+}
+.Details a {
+    text-decoration:underline; color:#525262;
+}
+
+/* Таблицы данных */
+.dataTable {
+    margin:0 auto;
+    width:600px;
+    border-width:0px;
+    padding:10px;
+    background-color:#f5f5ff;color:#000000;
+    border-collapse: separate;
+}
+.dataTable td {
+    padding:10px;
+    border:1px solid #000000;
+    text-align:left;
+    height:60px
+}
+
+/* Календарь */
+.calendar {
+    text-align:center;
+    margin:0px auto;
+}
+.calendar th{
+    font-size:8pt;
+    color:white;background-color:#AAAAAA;
+}
+.calendar .today {
+    background-color:#D6D8DA;
+    color: black;
+    font-weight: bold;
+}
+.calendar td{
+    font-size:8pt;
+    background-color:#E6E8EA;
+}

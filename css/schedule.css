@@ -1,0 +1,7 @@
+.schedule {width:500px;}
+.schedule .title {font-size:14pt; font-weight:bold;}
+.schedule .content {}
+
+.scheduleWeekDay {width:100%; margin:10px auto;}
+.scheduleWeekDay th {font-weight:normal;border-bottom:1px solid #000;}
+.scheduleWeekDay td {padding:3px 2px;border-bottom:1px solid #000;min-height:30px;}

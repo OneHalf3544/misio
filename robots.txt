@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /oneofmaterial.php
+Disallow: /prepods/prepodedit.php
+Disallow: /schedule/schededit.php
+Disallow: /newsmaker.php
+Disallow: /Users/
+Allow: /schedule/listforrobot.php
+Allow: /
