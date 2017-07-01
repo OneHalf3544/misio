@@ -1,4 +1,4 @@
-<? $Title = "Кафедры университета"; ?>
+<? $Title = "РљР°С„РµРґСЂС‹ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°"; ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 <!-- Body --> 
 <h1><? echo $Title; ?></h1>
@@ -26,13 +26,13 @@ $ResDeptsList = mysql_query(
 
 for(;$DeptArray = mysql_fetch_assoc($ResDeptsList);): ?>
   <div class="depts">
-    <div class="title">Кафедра "<? echo $DeptArray['DeptName'] ?>"</div>
+    <div class="title">РљР°С„РµРґСЂР° "<? echo $DeptArray['DeptName'] ?>"</div>
     <div class="content">
-      <h3>Заведующий кафедрой:</h3>
+      <h3>Р—Р°РІРµРґСѓСЋС‰РёР№ РєР°С„РµРґСЂРѕР№:</h3>
       <? echo $DeptArray['PrepodName'] ?><br />
-      <h3>Преподаватели кафедры:</h3>
-      <a href="/" class="loadPrepList" data-deptId="<? echo $DeptArray['id'] ?>">Загрузить список</a><br />
-      <h3>Описание: </h3><br />
+      <h3>РџСЂРµРїРѕРґР°РІР°С‚РµР»Рё РєР°С„РµРґСЂС‹:</h3>
+      <a href="/" class="loadPrepList" data-deptId="<? echo $DeptArray['id'] ?>">Р—Р°РіСЂСѓР·РёС‚СЊ СЃРїРёСЃРѕРє</a><br />
+      <h3>РћРїРёСЃР°РЅРёРµ: </h3><br />
       <? echo add_p_Tag($DeptArray['Description']); ?><br />
     </div>
   </div>

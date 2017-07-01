@@ -1,4 +1,4 @@
-<? $Title = "Редактировать расписание групп"; ?>
+<? $Title = "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЂР°СЃРїРёСЃР°РЅРёРµ РіСЂСѓРїРї"; ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 <!-- Body --> 
 
@@ -6,8 +6,8 @@
 <script type="text/javascript" src="/jscript/selectcascade.js"></script>
 <h1><? echo $Title ?></h1>
 <div class="textOfPage">
-<p>На этой страничке вы можете редактировать или добавить расписание группы. Для того, чтобы нужные предметы были добавлены в списки, они должны быть "прицеплены" к специальности на страничке <a href="/specmaker.php">редактора специальностей</a>.
-<p>Для редактирования вам необходимо сначала выбрать из списков свою специальность (это подгрузит названия предметов в списки), затем выбрать группу (либо создать новую, указав название)
+<p>РќР° СЌС‚РѕР№ СЃС‚СЂР°РЅРёС‡РєРµ РІС‹ РјРѕР¶РµС‚Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РёР»Рё РґРѕР±Р°РІРёС‚СЊ СЂР°СЃРїРёСЃР°РЅРёРµ РіСЂСѓРїРїС‹. Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РЅСѓР¶РЅС‹Рµ РїСЂРµРґРјРµС‚С‹ Р±С‹Р»Рё РґРѕР±Р°РІР»РµРЅС‹ РІ СЃРїРёСЃРєРё, РѕРЅРё РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ "РїСЂРёС†РµРїР»РµРЅС‹" Рє СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё РЅР° СЃС‚СЂР°РЅРёС‡РєРµ <a href="/specmaker.php">СЂРµРґР°РєС‚РѕСЂР° СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚РµР№</a>.
+<p>Р”Р»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СЃРЅР°С‡Р°Р»Р° РІС‹Р±СЂР°С‚СЊ РёР· СЃРїРёСЃРєРѕРІ СЃРІРѕСЋ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ (СЌС‚Рѕ РїРѕРґРіСЂСѓР·РёС‚ РЅР°Р·РІР°РЅРёСЏ РїСЂРµРґРјРµС‚РѕРІ РІ СЃРїРёСЃРєРё), Р·Р°С‚РµРј РІС‹Р±СЂР°С‚СЊ РіСЂСѓРїРїСѓ (Р»РёР±Рѕ СЃРѕР·РґР°С‚СЊ РЅРѕРІСѓСЋ, СѓРєР°Р·Р°РІ РЅР°Р·РІР°РЅРёРµ)
 </div>
 <form>
 <table class="optionsArrayTable">
@@ -16,14 +16,14 @@
   <col width="*">
 </colgroup>
 <tbody><tr>
-<td>Факультет:</td>
+<td>Р¤Р°РєСѓР»СЊС‚РµС‚:</td>
 <td><? echoFacultSelect() ?></td></tr>
-<tr><td>Специальность: </td>
+<tr><td>РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ: </td>
   <td><? echoSpecialitySelect(); ?></td>
 </tr>
-<tr><td>Семестр: </td>
+<tr><td>РЎРµРјРµСЃС‚СЂ: </td>
   <td><select id="Semestr" class="shortselect">
-    <option value="0">Все</option>
+    <option value="0">Р’СЃРµ</option>
     <? 
       $Res = mysql_query("SELECT `id`, `SemName` FROM `SemestrNames`");
       $SemArray = mysql_fetch_assoc($Res);
@@ -33,24 +33,24 @@
       }
     ?>
   </select></td></tr>
-  <tr><td>Группа: </td>
-  <td>Выбрать <select id="group" disabled="disabled">
-    <option value="0">- Группа -</option>
+  <tr><td>Р“СЂСѓРїРїР°: </td>
+  <td>Р’С‹Р±СЂР°С‚СЊ <select id="group" disabled="disabled">
+    <option value="0">- Р“СЂСѓРїРїР° -</option>
     </select>
-    или <input type="text" id="newGroupName" class="shortinput"><input type="button" id="btnCreateGroup" value="Создать">
+    РёР»Рё <input type="text" id="newGroupName" class="shortinput"><input type="button" id="btnCreateGroup" value="РЎРѕР·РґР°С‚СЊ">
   </td></tr>
 <tbody></table>
 </form>
 
 <table class="tableSpec">
 <tr>
-  <th>Расписание</th>
+  <th>Р Р°СЃРїРёСЃР°РЅРёРµ</th>
 </tr>
 <tr>
   <td class="subjAll">
-  <input type="button" id="btnSave" value="Сохранить">
+  <input type="button" id="btnSave" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
   <? 
-  $WeekDays = array('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота');
+  $WeekDays = array('РџРѕРЅРµРґРµР»СЊРЅРёРє', 'Р’С‚РѕСЂРЅРёРє', 'РЎСЂРµРґР°', 'Р§РµС‚РІРµСЂРі', 'РџСЏС‚РЅРёС†Р°', 'РЎСѓР±Р±РѕС‚Р°');
   $LectTime = array('8:30', '10:10', '11:50', '14:00', '15:40', '17:20', '19:00', '20:40');
   $PrepSel = PrepodSelect();
   foreach ($WeekDays as $Day) { ?>
@@ -68,10 +68,10 @@
         </colgroup>
         <tbody>
           <tr>
-            <th>Время</th>
-            <th colspan="3">Предмет</th>
-            <th>Преподаватель</th>
-            <th>Ауд.</th>
+            <th>Р’СЂРµРјСЏ</th>
+            <th colspan="3">РџСЂРµРґРјРµС‚</th>
+            <th>РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ</th>
+            <th>РђСѓРґ.</th>
           </tr>
           <?php 
           foreach($LectTime as $t) { ?>
@@ -87,19 +87,19 @@
             <? } ?>
             </td>
             <td>
-              <img alt="split" src="/img/split.png" title="Раздвоить/слить предмет на числитель/знаменатель">
+              <img alt="split" src="/img/split.png" title="Р Р°Р·РґРІРѕРёС‚СЊ/СЃР»РёС‚СЊ РїСЂРµРґРјРµС‚ РЅР° С‡РёСЃР»РёС‚РµР»СЊ/Р·РЅР°РјРµРЅР°С‚РµР»СЊ">
             </td>
             <td>
               <select class="subjSelect">
-                <option value="0">Не выбран</option>
+                <option value="0">РќРµ РІС‹Р±СЂР°РЅ</option>
               </select>
             </td>
             <td>
               <select class="longselect">
-                <option value="none">Не выбран</option>
-                <option value="Lection">Лекция</option>
-                <option value="Pract">Практика</option>
-                <option value="Lab">Лабораторная</option>
+                <option value="none">РќРµ РІС‹Р±СЂР°РЅ</option>
+                <option value="Lection">Р›РµРєС†РёСЏ</option>
+                <option value="Pract">РџСЂР°РєС‚РёРєР°</option>
+                <option value="Lab">Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ</option>
               </select>
             </td>
             <td>

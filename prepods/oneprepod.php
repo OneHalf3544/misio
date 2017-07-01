@@ -1,5 +1,5 @@
 <?
-  if(!$AJAXLoadPrepSched): // Чтобы этот код появился на странице один раз ?>
+  if(!$AJAXLoadPrepSched): // Р§С‚РѕР±С‹ СЌС‚РѕС‚ РєРѕРґ РїРѕСЏРІРёР»СЃСЏ РЅР° СЃС‚СЂР°РЅРёС†Рµ РѕРґРёРЅ СЂР°Р· ?>
     <script type="text/javascript">
       $(document).ready(function(){
         $('.prepSchedule').click(function(){
@@ -21,7 +21,7 @@
 <div class="prepods">
   <h2 class="title">
     <? 
-      if($_SERVER['PHP_SELF'] != '/oneofmaterial.php') { // Добавлять ли ссылку на страничку с комментариями?
+      if($_SERVER['PHP_SELF'] != '/oneofmaterial.php') { // Р”РѕР±Р°РІР»СЏС‚СЊ Р»Рё СЃСЃС‹Р»РєСѓ РЅР° СЃС‚СЂР°РЅРёС‡РєСѓ СЃ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё?
         echo '<a href="/oneofmaterial.php?TypeOfMat=Prepods&NMaterial='.$Prepods['id'].'">'.
           $Prepods['PrepodName'].'</a>';
       } 
@@ -29,14 +29,14 @@
         echo $Prepods['PrepodName'];
       }
     ?>
-    <a class="editlink" href="/prepods/prepodedit.php?id=<? echo $Prepods['id']?>">[Редактировать]</a>
+    <a class="editlink" href="/prepods/prepodedit.php?id=<? echo $Prepods['id']?>">[Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ]</a>
   </h2>
   <div class="content">
     <? if(isset($Prepods['ImgName']) && $Prepods['ImgName'] != "") {
       echo '<img src="/img/prepods/'.$Prepods['ImgName'].'" alt="'.$Prepods['PrepodName'].'">';
     } ?>
-    <h3>День рожденья:</h3> <? echo $Prepods['BirthDay'] ?><br />
-    <h3>Кафедра:</h3>
+    <h3>Р”РµРЅСЊ СЂРѕР¶РґРµРЅСЊСЏ:</h3> <? echo $Prepods['BirthDay'] ?><br />
+    <h3>РљР°С„РµРґСЂР°:</h3>
     <? 
       $Res2 = mysql_query('SELECT `DeptName` FROM `Depts` WHERE `id` = '.$Prepods['DeptId']);
       if ($Res2 != false) {
@@ -44,15 +44,15 @@
         echo $S['DeptName']; 
       }
       else {
-        echo "Нет данных";
+        echo "РќРµС‚ РґР°РЅРЅС‹С…";
       }
     ?><br />
-    <h3>Телефон:</h3>
+    <h3>РўРµР»РµС„РѕРЅ:</h3>
     <?
       if (isset($Prepods['Telephone']) && $Prepods['Telephone'] != '')
         echo $Prepods['Telephone'];
       else
-        echo "Нет данных";
+        echo "РќРµС‚ РґР°РЅРЅС‹С…";
     ?>
     <br />
     <h3>E-Mail:</h3>
@@ -60,11 +60,11 @@
       if (isset($Prepods['EMail']) && $Prepods['EMail'] != '')
         echo $Prepods['EMail'];
       else
-        echo "Нет данных";
+        echo "РќРµС‚ РґР°РЅРЅС‹С…";
     ?>
     <br />
-    <h3>Ученое звание:</h3><? echo $PrepodStatus[$Prepods['Status']] ?><br />
-    <h3>Ведет предметы:</h3>
+    <h3>РЈС‡РµРЅРѕРµ Р·РІР°РЅРёРµ:</h3><? echo $PrepodStatus[$Prepods['Status']] ?><br />
+    <h3>Р’РµРґРµС‚ РїСЂРµРґРјРµС‚С‹:</h3>
     <ul>
     <?
       $Res2 = mysql_query(
@@ -76,18 +76,18 @@
       ); 
       $S = mysql_fetch_row($Res2);
       if ($S == false) 
-        echo "<li>Данные отсутствуют";
+        echo "<li>Р”Р°РЅРЅС‹Рµ РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚";
       for(; $S != false; $S = mysql_fetch_row($Res2)) {
         echo "<li>$S[0]";
       }
     ?>
     </ul>
-    <h3>Расписание преподавателя:</h3> 
+    <h3>Р Р°СЃРїРёСЃР°РЅРёРµ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ:</h3> 
     <a class="prepSchedule" data-PrepodId="<? echo $Prepods['id'] ?>" 
        href="/schedule/schedinner.php?PrepodId=<? echo $Prepods['id'] ?>">
-      Посмотреть расписание преподавателя
+      РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂР°СЃРїРёСЃР°РЅРёРµ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ
     </a><br />
-    <h3>Описание:</h3> <? echo add_p_Tag($Prepods['Description']); ?>
-    <div class="Details">Просмотров(<? echo $Prepods['Views'] ?>), комментариев:(<? echo $Prepods['CommCount'] ?>)</div>
+    <h3>РћРїРёСЃР°РЅРёРµ:</h3> <? echo add_p_Tag($Prepods['Description']); ?>
+    <div class="Details">РџСЂРѕСЃРјРѕС‚СЂРѕРІ(<? echo $Prepods['Views'] ?>), РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ:(<? echo $Prepods['CommCount'] ?>)</div>
   </div>
 </div>

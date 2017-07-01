@@ -1,50 +1,50 @@
 /* 
- * Здесь содержатся функции для редактора специальностей.
+ * Р—РґРµСЃСЊ СЃРѕРґРµСЂР¶Р°С‚СЃСЏ С„СѓРЅРєС†РёРё РґР»СЏ СЂРµРґР°РєС‚РѕСЂР° СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚РµР№.
  */
 $(document).ready(function(){
     addInteractivePosibility('.specCurr div.subject', true);
 
   $('#createButton').click(function () {
     /*
-     * Определяем реакцию на кнопку создания предмета
+     * РћРїСЂРµРґРµР»СЏРµРј СЂРµР°РєС†РёСЋ РЅР° РєРЅРѕРїРєСѓ СЃРѕР·РґР°РЅРёСЏ РїСЂРµРґРјРµС‚Р°
      */
-    //Добавить форму создания
+    //Р”РѕР±Р°РІРёС‚СЊ С„РѕСЂРјСѓ СЃРѕР·РґР°РЅРёСЏ
     if ( $('#createForm').length == 0) {
         $(this).after(
-          $('<div id="createForm">Заголовок<br />'+
+          $('<div id="createForm">Р—Р°РіРѕР»РѕРІРѕРє<br />'+
             '<input id="subjCreateTitle" class="longinput" type="text"><br />'+
-            'Описание<br />'+
+            'РћРїРёСЃР°РЅРёРµ<br />'+
             '<textarea id="subjCreateDescr"></textarea>'+
-            '<input id="btnSubjCreate" type="button" value="Применить">'+
-            '<input id="btnSubjCreateCancel" type="button" value="Отменить">'+
+            '<input id="btnSubjCreate" type="button" value="РџСЂРёРјРµРЅРёС‚СЊ">'+
+            '<input id="btnSubjCreateCancel" type="button" value="РћС‚РјРµРЅРёС‚СЊ">'+
           '</div>')
         );
         
         $('#btnSubjCreate').click(function(){
-          //Сформировать html блок с введенным содержимым, убрать форму.
-          //Отправить запрос на добавление в базу данных
+          //РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ html Р±Р»РѕРє СЃ РІРІРµРґРµРЅРЅС‹Рј СЃРѕРґРµСЂР¶РёРјС‹Рј, СѓР±СЂР°С‚СЊ С„РѕСЂРјСѓ.
+          //РћС‚РїСЂР°РІРёС‚СЊ Р·Р°РїСЂРѕСЃ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…
           $.post("/test2.php", {act:'createSubject', title:$('#subjCreateTitle').val(), descr:$('#subjCreateDescr').val()}, function(data){
-            data = removeAdvertisement(data); //Отрезаем рекламу
+            data = removeAdvertisement(data); //РћС‚СЂРµР·Р°РµРј СЂРµРєР»Р°РјСѓ
             id = eval('('+data+')');
-            //Добавить этот id в код html
+            //Р”РѕР±Р°РІРёС‚СЊ СЌС‚РѕС‚ id РІ РєРѕРґ html
             var objsubj = {id:id, subject:new Array($('#subjCreateTitle').val()),
               descr:new Array($('#subjCreateDescr').val())};
             addSubjects(objsubj, '.subjAll');
-            $('#createForm').remove(); //Удаляем лишнее
+            $('#createForm').remove(); //РЈРґР°Р»СЏРµРј Р»РёС€РЅРµРµ
           });
         });
 
         $('#btnSubjCreateCancel').click(function(){
-            // Отмена создания предмета
-            $('#createForm').remove(); // Удаляем лишнее
+            // РћС‚РјРµРЅР° СЃРѕР·РґР°РЅРёСЏ РїСЂРµРґРјРµС‚Р°
+            $('#createForm').remove(); // РЈРґР°Р»СЏРµРј Р»РёС€РЅРµРµ
         });
     }
   });
 });
 
 /*
- * По нажатию на кнопку удаления
- * Удаляет предмет из текущего семестра
+ * РџРѕ РЅР°Р¶Р°С‚РёСЋ РЅР° РєРЅРѕРїРєСѓ СѓРґР°Р»РµРЅРёСЏ
+ * РЈРґР°Р»СЏРµС‚ РїСЂРµРґРјРµС‚ РёР· С‚РµРєСѓС‰РµРіРѕ СЃРµРјРµСЃС‚СЂР°
  */
 function removeSubject() {
     $(this).parents('.subject').fadeOut("normal");
@@ -59,14 +59,14 @@ function removeSubject() {
 }
 
 /*
- * Добавляет предмет к специальности
+ * Р”РѕР±Р°РІР»СЏРµС‚ РїСЂРµРґРјРµС‚ Рє СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё
  */
 function subjectApply(){
     if(($('#Semestr').val() == 0) || ($('#Speciality').val() == 0)) {
-        alert('Сначала выберите специальность и семестр');
+        alert('РЎРЅР°С‡Р°Р»Р° РІС‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ Рё СЃРµРјРµСЃС‚СЂ');
     }
     else {
-        $('.specCurr').prepend($(this).parents('.subject')); // Перемещаем блок
+        $('.specCurr').prepend($(this).parents('.subject')); // РџРµСЂРµРјРµС‰Р°РµРј Р±Р»РѕРє
         
         $.post('/test2.php', {
             act  : 'adding',
@@ -75,7 +75,7 @@ function subjectApply(){
             id   : $(this).parents('.subject').attr('id')
         });
 
-        // Меняем плюсег на крестег
+        // РњРµРЅСЏРµРј РїР»СЋСЃРµРі РЅР° РєСЂРµСЃС‚РµРі
         $(this).before($('<img class="delSubject" src="/img/specmaker/del.png">'));
         $(this).prev('img').click(removeSubject);
         $(this).remove();
@@ -83,19 +83,19 @@ function subjectApply(){
 }
 
 /*
- * Производит поиск предметов в базе данных по запросу
+ * РџСЂРѕРёР·РІРѕРґРёС‚ РїРѕРёСЃРє РїСЂРµРґРјРµС‚РѕРІ РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С… РїРѕ Р·Р°РїСЂРѕСЃСѓ
  */
 function searchSubjects() {
   $('#searchForm').nextAll().remove();
   $.post("/test2.php", {act:'findSubject', findStr : $('#findStr').val()}, function(data){
-    data = removeAdvertisement(data); //Отрезаем рекламу
+    data = removeAdvertisement(data); //РћС‚СЂРµР·Р°РµРј СЂРµРєР»Р°РјСѓ
     var objsubj = eval("("+data+")");
     $('#searchForm').nextAll().remove();
     addSubjects(objsubj, '.subjAll');
   });
 }
 
-function addSubjects(objsubj, tlocation) { //objsubj - массив с данными, tlocation - селектор того, куда добавлять
+function addSubjects(objsubj, tlocation) { //objsubj - РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё, tlocation - СЃРµР»РµРєС‚РѕСЂ С‚РѕРіРѕ, РєСѓРґР° РґРѕР±Р°РІР»СЏС‚СЊ
   if (objsubj.id != "") {
     for(var i = 0; i < (objsubj.id.length); i++) {
         $(tlocation).append(
@@ -110,7 +110,7 @@ function addSubjects(objsubj, tlocation) { //objsubj - массив с данными, tlocati
 }
 
 function ApplyButtonClick () {
-    //Нажатие на кнопку "Применить" в форме 
+    //РќР°Р¶Р°С‚РёРµ РЅР° РєРЅРѕРїРєСѓ "РџСЂРёРјРµРЅРёС‚СЊ" РІ С„РѕСЂРјРµ 
     var CurSubj = $(this).parents('.subject');
     var CurForm = $(CurSubj).children('.subjectMiniForm');
     $(CurSubj).children('div.title').text($(this).prevAll('input:last[type="text"]').val());
@@ -126,35 +126,35 @@ function ApplyButtonClick () {
 }
 
 function addInteractivePosibility(target, imgButtonDelete) {
-    if (imgButtonDelete == true) { // Рисуем либо крестик, либо плюсик. Смотря куда добавляем
+    if (imgButtonDelete == true) { // Р РёСЃСѓРµРј Р»РёР±Рѕ РєСЂРµСЃС‚РёРє, Р»РёР±Рѕ РїР»СЋСЃРёРє. РЎРјРѕС‚СЂСЏ РєСѓРґР° РґРѕР±Р°РІР»СЏРµРј
         $(target+' .title').append(
-            $('<img alt="Удалить" class="delSubject" src="/img/specmaker/del.png">')
+            $('<img alt="РЈРґР°Р»РёС‚СЊ" class="delSubject" src="/img/specmaker/del.png">')
         );
         $(target+' .title img').click(removeSubject);
     } else {
         $(target+' .title').append(
-            $('<img alt="Добавить" class="applySubject" src="/img/specmaker/add.png">'));
+            $('<img alt="Р”РѕР±Р°РІРёС‚СЊ" class="applySubject" src="/img/specmaker/add.png">'));
         $(target+' .title img').click(subjectApply);
     }
-    $(target+' .title').dblclick(function(){ // Редактируем предмет по двойному клику на заголовке
+    $(target+' .title').dblclick(function(){ // Р РµРґР°РєС‚РёСЂСѓРµРј РїСЂРµРґРјРµС‚ РїРѕ РґРІРѕР№РЅРѕРјСѓ РєР»РёРєСѓ РЅР° Р·Р°РіРѕР»РѕРІРєРµ
         if ($(this).next('div.content').css('display') != "none") { 
-          // Рисуем форму редактирования, если она еще не создана
+          // Р РёСЃСѓРµРј С„РѕСЂРјСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ, РµСЃР»Рё РѕРЅР° РµС‰Рµ РЅРµ СЃРѕР·РґР°РЅР°
           $(this).parent().append($(
               '<form class="subjectMiniForm">'+
                 '<input class="longinput" type="text">'+
                 '<textarea></textarea>'+
-                '<input type="button" name="applyText"    value="Применить">'+
-                '<input type="button" name="cancelChange" value="Отменить" >'+
+                '<input type="button" name="applyText"    value="РџСЂРёРјРµРЅРёС‚СЊ">'+
+                '<input type="button" name="cancelChange" value="РћС‚РјРµРЅРёС‚СЊ" >'+
               '</form>'
           ));
-          // Копируем текст в соответствующие поля ввода
+          // РљРѕРїРёСЂСѓРµРј С‚РµРєСЃС‚ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РїРѕР»СЏ РІРІРѕРґР°
           $(this).nextAll('.subjectMiniForm').children('input[type="text"]:first').val($(this).text());
           $(this).nextAll('.subjectMiniForm').children('textarea:first').val($(this).next('div.content').text());
           $(this).next('div.content').hide();
 
           $(this).nextAll('.subjectMiniForm').children('input[name="applyText"]').click(ApplyButtonClick);
           $(this).nextAll('.subjectMiniForm').children('input[name="cancelChange"]').click(function() {
-              // По нажатию на кнопку отмены удаляем форму, и показываем то, что было
+              // РџРѕ РЅР°Р¶Р°С‚РёСЋ РЅР° РєРЅРѕРїРєСѓ РѕС‚РјРµРЅС‹ СѓРґР°Р»СЏРµРј С„РѕСЂРјСѓ, Рё РїРѕРєР°Р·С‹РІР°РµРј С‚Рѕ, С‡С‚Рѕ Р±С‹Р»Рѕ
               $(this).parents('.subject').children('.content').show();
               $(this).parents('.subjectMiniForm').remove();
           });

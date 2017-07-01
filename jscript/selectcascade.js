@@ -1,6 +1,6 @@
 $(document).ready(function(){
   // $('#Facult').val(0);
-  $('#Facult').change(function(){ // При смене факультета заполняем select списком специальностей
+  $('#Facult').change(function(){ // РџСЂРё СЃРјРµРЅРµ С„Р°РєСѓР»СЊС‚РµС‚Р° Р·Р°РїРѕР»РЅСЏРµРј select СЃРїРёСЃРєРѕРј СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚РµР№
     var facultVal = $('#Facult').val();
     $.get("/test2.php", {act: 'getFacultSpeciality', Fac:facultVal}, function(data){
       data = removeAdvertisement(data);
@@ -18,15 +18,15 @@ $(document).ready(function(){
   
 });
 
-function changeSubjectList(){ // Рисуем список предметов специальности
+function changeSubjectList(){ // Р РёСЃСѓРµРј СЃРїРёСЃРѕРє РїСЂРµРґРјРµС‚РѕРІ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё
   var specVal = $('#Speciality').val();
   var semVal = $('#Semestr').val();
   $.get("/test2.php", {act:'getSubjectList', Spec:specVal, Sem:semVal}, function(data){
-    data = removeAdvertisement(data); //Отрезаем рекламу
+    data = removeAdvertisement(data); //РћС‚СЂРµР·Р°РµРј СЂРµРєР»Р°РјСѓ
     var objsubj = eval("("+data+")");
     $('.specCurr').empty();
-    // addSubjects - должна определяться в других файлах, поэтому перед вызовом
-    // проверяем её наличие
+    // addSubjects - РґРѕР»Р¶РЅР° РѕРїСЂРµРґРµР»СЏС‚СЊСЃСЏ РІ РґСЂСѓРіРёС… С„Р°Р№Р»Р°С…, РїРѕСЌС‚РѕРјСѓ РїРµСЂРµРґ РІС‹Р·РѕРІРѕРј
+    // РїСЂРѕРІРµСЂСЏРµРј РµС‘ РЅР°Р»РёС‡РёРµ
     if(typeof(addSubjects) == 'function')
         addSubjects(objsubj, '.specCurr');
   });

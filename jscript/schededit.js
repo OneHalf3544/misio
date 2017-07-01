@@ -1,9 +1,9 @@
 /*
- *  Сворачиваем/разворачиваем на один/два предмета (числитель/знаменатель)
+ *  РЎРІРѕСЂР°С‡РёРІР°РµРј/СЂР°Р·РІРѕСЂР°С‡РёРІР°РµРј РЅР° РѕРґРёРЅ/РґРІР° РїСЂРµРґРјРµС‚Р° (С‡РёСЃР»РёС‚РµР»СЊ/Р·РЅР°РјРµРЅР°С‚РµР»СЊ)
  */
 function split_collapse_subj (row, act) {
     // act = toggle, split, collapse
-    //Надо бы заменить индикаторы состояния на другие. Вдруг я захочу картинки другие
+    //РќР°РґРѕ Р±С‹ Р·Р°РјРµРЅРёС‚СЊ РёРЅРґРёРєР°С‚РѕСЂС‹ СЃРѕСЃС‚РѕСЏРЅРёСЏ РЅР° РґСЂСѓРіРёРµ. Р’РґСЂСѓРі СЏ Р·Р°С…РѕС‡Сѓ РєР°СЂС‚РёРЅРєРё РґСЂСѓРіРёРµ
     if ((act == 'collapse' && $(row[0].cells[1]).children('img').attr('src') == '/img/split.png')
         || (act == 'split' && $(row[0].cells[1]).children('img').attr('src') == '/img/collapse.png'))
         return;
@@ -27,13 +27,13 @@ function split_collapse_subj (row, act) {
 }
 
 $(document).ready(function(){
-    //var WeekDays = new array("Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота");
+    //var WeekDays = new array("РџРѕРЅРµРґРµР»СЊРЅРёРє", "Р’С‚РѕСЂРЅРёРє", "РЎСЂРµРґР°", "Р§РµС‚РІРµСЂРі", "РџСЏС‚РЅРёС†Р°", "РЎСѓР±Р±РѕС‚Р°");
 
-    // Загружаем расписание
+    // Р—Р°РіСЂСѓР¶Р°РµРј СЂР°СЃРїРёСЃР°РЅРёРµ
     $('#group').change(function() {
         if ($('#group').val() != 0) {
             $.get("/test2.php", {act:"scheduleGet", Group:$('#group').val()}, function(data){
-                data = removeAdvertisement(data); //Отрезаем рекламу
+                data = removeAdvertisement(data); //РћС‚СЂРµР·Р°РµРј СЂРµРєР»Р°РјСѓ
                 var sch = eval("("+data+")");
                 clearFields();
                 for(var i = 0; i <= sch.length-1; i++) {
@@ -47,7 +47,7 @@ $(document).ready(function(){
                         s.Week--;
                     }
                     $(currLesson+' .subjSelect option[@value="'+s.SubjectId+'"]:eq('+s.Week+')').attr("selected", "selected");
-                    // "Опасные" куски кода. Сломается, если поменять число столбцов
+                    // "РћРїР°СЃРЅС‹Рµ" РєСѓСЃРєРё РєРѕРґР°. РЎР»РѕРјР°РµС‚СЃСЏ, РµСЃР»Рё РїРѕРјРµРЅСЏС‚СЊ С‡РёСЃР»Рѕ СЃС‚РѕР»Р±С†РѕРІ
                     $(currLesson+' td:eq(3) option[@value="'+s.Type+'"]:eq('+s.Week+')').attr("selected", "selected");
                     $(currLesson+' td:eq(4) option[@value="'+s.PrepodId+'"]:eq('+s.Week+')').attr("selected", "selected");
                     $(currLesson+' td:eq(5) input:eq('+s.Week+')').val(s.Location);
@@ -61,9 +61,9 @@ $(document).ready(function(){
         }
     });
 
-    $('#btnCreateGroup').click(function(){ //создание группы
+    $('#btnCreateGroup').click(function(){ //СЃРѕР·РґР°РЅРёРµ РіСЂСѓРїРїС‹
         if($('#Speciality').val() == 0 || $('#newGroupName').val() == '') {
-            alert('Сначала выберите специальность и введите название группы');
+            alert('РЎРЅР°С‡Р°Р»Р° РІС‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ Рё РІРІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹');
             return false;
         }
         $.post("/test2.php", {
@@ -79,25 +79,25 @@ $(document).ready(function(){
         });
     });
 
-    $('.antract').change(function() { // Меняем время лекций при смене выбора 13:30/14:00
+    $('.antract').change(function() { // РњРµРЅСЏРµРј РІСЂРµРјСЏ Р»РµРєС†РёР№ РїСЂРё СЃРјРµРЅРµ РІС‹Р±РѕСЂР° 13:30/14:00
         var LectTime = new Array (
         new Array('8:30', '10:10', '11:50', '13:30', '15:10', '16:40', '18:30', '20:10'),
         new Array('8:30', '10:10', '11:50', '14:00', '15:40', '17:20', '19:00', '20:40')
     );
-        // Меняем время следующее за select'ом
+        // РњРµРЅСЏРµРј РІСЂРµРјСЏ СЃР»РµРґСѓСЋС‰РµРµ Р·Р° select'РѕРј
         var tbl = $(this).parents('.scheduleWeekDay');
         for (var i = 4; i <= 7; i++) {
             $(tbl[0].rows[i+1].cells[0]).text(LectTime[$(this).val()][i]);
         }
     });
 
-    $('.schedule .content img').click(function() { // Делим на числитель и знаменатель
+    $('.schedule .content img').click(function() { // Р”РµР»РёРј РЅР° С‡РёСЃР»РёС‚РµР»СЊ Рё Р·РЅР°РјРµРЅР°С‚РµР»СЊ
         split_collapse_subj($(this).parents('tr:first'), 'toggle');
     });
 
     $('#btnSave').click(function() {
         if ($('#group').val() == 0) {
-            alert('Должна быть выбрана группа');
+            alert('Р”РѕР»Р¶РЅР° Р±С‹С‚СЊ РІС‹Р±СЂР°РЅР° РіСЂСѓРїРїР°');
             return false;
         }
         var GroupId = $('#group').val();
@@ -109,10 +109,10 @@ $(document).ready(function(){
         var PrepodId = [];
         var Type = [];
         var Location = [];
-        for(var i = 0; i <= 5; i++) { // Цикл по дням
+        for(var i = 0; i <= 5; i++) { // Р¦РёРєР» РїРѕ РґРЅСЏРј
             var tbl = $('.schedule:eq('+i+') table');
-            for(var j = 1; j <= 8; j++) { // Цикл по парам
-                var ChZnLen = $(tbl[0].rows[j].cells[2]).children('select').length; // Число select'ов в ячейке
+            for(var j = 1; j <= 8; j++) { // Р¦РёРєР» РїРѕ РїР°СЂР°Рј
+                var ChZnLen = $(tbl[0].rows[j].cells[2]).children('select').length; // Р§РёСЃР»Рѕ select'РѕРІ РІ СЏС‡РµР№РєРµ
                 for(var k = 0; k < ChZnLen; k++) {
                     if ($(tbl[0].rows[j].cells[2]).children('select:eq('+k+')').val() != "0") {
                         var ChZn;
@@ -132,11 +132,11 @@ $(document).ready(function(){
                 }
             }
         }
-        // Отправляем собранные эначения на сервер
+        // РћС‚РїСЂР°РІР»СЏРµРј СЃРѕР±СЂР°РЅРЅС‹Рµ СЌРЅР°С‡РµРЅРёСЏ РЅР° СЃРµСЂРІРµСЂ
         $.post("/test2.php", {act:"scheduleSave", Group:GroupId, SubjectId:SubjectId, NLesson:NLesson,
             Week:Week, WeekDay:WeekDay, Antract:Antract, PrepodId:PrepodId, Type:Type, Location:Location},
         function (data) {
-            alert("Сохранено");
+            alert("РЎРѕС…СЂР°РЅРµРЅРѕ");
         });
     });
 
@@ -153,17 +153,17 @@ function clearFields() {
 
 function addSubjects(objsubj, tlocation) {
     $('.subjAll .subjSelect').empty();
-    $('.subjAll .subjSelect').append($('<option value="0">Не выбран</option>'));
+    $('.subjAll .subjSelect').append($('<option value="0">РќРµ РІС‹Р±СЂР°РЅ</option>'));
     if (objsubj.id != "") {
         for(var i = 0; i < (objsubj.id.length); i++) {
             $('.subjAll .subjSelect').append($('<option value="'+objsubj.id[i]+'">'+objsubj.subject[i]+'</option>'));
         }
     }
     $.get("/test2.php", {act:"groupGet", SpecId:$('#Speciality').val()}, function(data) {
-        data = removeAdvertisement(data); //Отрезаем рекламу
+        data = removeAdvertisement(data); //РћС‚СЂРµР·Р°РµРј СЂРµРєР»Р°РјСѓ
         var gr = eval("("+data+")");
         $('#group').attr('disabled', '');
-        $('#group').empty(); $('#group').append($('<option value="0">- Группа -</option>'));
+        $('#group').empty(); $('#group').append($('<option value="0">- Р“СЂСѓРїРїР° -</option>'));
         for(var i = 0; i < gr.length; i++)
             $('#group').append(
                 $('<option value="'+gr[i].id+'">'+gr[i].Title+'</option>')

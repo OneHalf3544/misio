@@ -1,10 +1,10 @@
-<? $Title = "Расписание"; ?>
+<? $Title = "Р Р°СЃРїРёСЃР°РЅРёРµ"; ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 <!-- Body --> 
 <h1><? echo $Title ?></h1>
 <script type="text/javascript">
     $(document).ready(function(){
-        //var WeekDays = new Array("Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота");
+        //var WeekDays = new Array("РџРѕРЅРµРґРµР»СЊРЅРёРє", "Р’С‚РѕСЂРЅРёРє", "РЎСЂРµРґР°", "Р§РµС‚РІРµСЂРі", "РџСЏС‚РЅРёС†Р°", "РЎСѓР±Р±РѕС‚Р°");
         var LectTime = new Array (
             new Array('8:30', '10:10', '11:50', '13:30', '15:10', '16:40', '18:30', '20:10'),
             new Array('8:30', '10:10', '11:50', '14:00', '15:40', '17:20', '19:00', '20:40')
@@ -13,7 +13,7 @@
         $("#group").change(function(){
             window.location.href = '/schedule/raspisanie.php?Group='+$('#group').val();
 //            $.get("/schedule/schedinner.php", {GroupId:$('#group').val()}, function(data){
-//                data = removeAdvertisement(data); //Отрезаем рекламу
+//                data = removeAdvertisement(data); //РћС‚СЂРµР·Р°РµРј СЂРµРєР»Р°РјСѓ
 //                $('.subjAll').empty();
 //                $('.subjAll').append(data);
 //            });
@@ -31,20 +31,20 @@
   <col width="*">
 </colgroup>
 <tbody><tr>
-  <td>Группа: </td>
+  <td>Р“СЂСѓРїРїР°: </td>
     <td>
         <? if(isset($_GET['Group']))
             echoGroupSelect($_GET['Group']);
         else
             echoGroupSelect(); ?>
-        <noscript><input type="submit" value="Перейти" /></noscript>
+        <noscript><input type="submit" value="РџРµСЂРµР№С‚Рё" /></noscript>
     </td></tr>
 <tbody></table>
 </form>
 
 <table class="tableSpec">
 <tr>
-  <th>Расписание <a class="editlink" href="/schedule/schededit.php">[Редактировать]</a></th>
+  <th>Р Р°СЃРїРёСЃР°РЅРёРµ <a class="editlink" href="/schedule/schededit.php">[Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ]</a></th>
 </tr>
 <tr>
     <td class="subjAll">

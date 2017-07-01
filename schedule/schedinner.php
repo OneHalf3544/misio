@@ -11,34 +11,34 @@ else {
 if(!isset($conn))
     $conn2 = db_connect ();
 
-$SubjType = array('none' => '', 'Lection' => 'Лекция', 'Lab' => 'Лабораторная', 'Pract' => 'Практика');
+$SubjType = array('none' => '', 'Lection' => 'Р›РµРєС†РёСЏ', 'Lab' => 'Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ', 'Pract' => 'РџСЂР°РєС‚РёРєР°');
 $LectTime = array();
 $LectTime[0] = array('8:30', '10:10', '11:50', '13:30', '15:10', '16:40', '18:20', '20:00');
 $LectTime[1] = array('8:30', '10:10', '11:50', '14:00', '15:40', '17:20', '19:00', '20:40');
 
 if(isset($_REQUEST['PrepodId'])):
-    $Res = mysql_query( // Расписание преподавателя
+    $Res = mysql_query( // Р Р°СЃРїРёСЃР°РЅРёРµ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ
         'SELECT `Schedule`.*, `Subjects`.`Title` AS SubjTitle, `Prepods`.`PrepodName`
         FROM `Schedule` LEFT JOIN `Subjects` ON `Subjects`.`id` = `Schedule`.`SubjectId`
         LEFT JOIN `Prepods` ON `Schedule`.`PrepodId` = `Prepods`.`id`
         WHERE `PrepodId`="'.intval($_REQUEST['PrepodId']).'" ORDER BY WeekDay, NLesson, Week'
     );
 else :
-    $Res = mysql_query( // Расписание группы
+    $Res = mysql_query( // Р Р°СЃРїРёСЃР°РЅРёРµ РіСЂСѓРїРїС‹
         'SELECT `Schedule`.*, `Subjects`.`Title` AS SubjTitle, `Prepods`.`PrepodName`
         FROM `Schedule` LEFT JOIN `Subjects` ON `Subjects`.`id` = `Schedule`.`SubjectId`
         LEFT JOIN `Prepods` ON `Schedule`.`PrepodId` = `Prepods`.`id`
         WHERE `GroupId`="'.$GroupId.'" ORDER BY WeekDay, NLesson, Week'
     );
 endif;
-if (!isset($_REQUEST['Printable'])) // Добавляем ссылку на версию для печати
+if (!isset($_REQUEST['Printable'])) // Р”РѕР±Р°РІР»СЏРµРј СЃСЃС‹Р»РєСѓ РЅР° РІРµСЂСЃРёСЋ РґР»СЏ РїРµС‡Р°С‚Рё
     if (isset($_REQUEST['PrepodId']))
-        echo '<a href="/schedule/schedinner.php?PrepodId='.$_REQUEST['PrepodId'].'&Printable=yes">Версия для печати</a><br />';
+        echo '<a href="/schedule/schedinner.php?PrepodId='.$_REQUEST['PrepodId'].'&Printable=yes">Р’РµСЂСЃРёСЏ РґР»СЏ РїРµС‡Р°С‚Рё</a><br />';
     else
-        echo '<a href="/schedule/schedinner.php?GroupId='.$GroupId.'&Printable=yes">Версия для печати</a><br />';
+        echo '<a href="/schedule/schedinner.php?GroupId='.$GroupId.'&Printable=yes">Р’РµСЂСЃРёСЏ РґР»СЏ РїРµС‡Р°С‚Рё</a><br />';
 
 if (mysql_num_rows($Res) == 0)
-    echo "Нет данных";
+    echo "РќРµС‚ РґР°РЅРЅС‹С…";
 while(($S = mysql_fetch_assoc($Res)) != false):
     $SubjStr = $S['SubjTitle'].'. '.$SubjType[$S['Type']].'<br>'.$S['PrepodName'];
     $Location = $S['Location'];
@@ -59,9 +59,9 @@ for($i = 0; $i <= 5; $i++):
             </colgroup>
             <tbody>
             <tr>
-                <th>Время</th>
-                <th>Предмет</th>
-                <th>Ауд.</th>
+                <th>Р’СЂРµРјСЏ</th>
+                <th>РџСЂРµРґРјРµС‚</th>
+                <th>РђСѓРґ.</th>
             </tr>
             <? for($j = 1; $j <= 8; $j++):
                 if (isset($SubjArray[$i][$j])) :

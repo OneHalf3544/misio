@@ -1,15 +1,15 @@
 <? 
 if (isset($_REQUEST['id']) || isset($_REQUEST['edit']))
-    $Title = "Редактировать данные о преподавателе";
+    $Title = "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РґР°РЅРЅС‹Рµ Рѕ РїСЂРµРїРѕРґР°РІР°С‚РµР»Рµ";
 else
-    $Title = "Создать описание преподавателя";
+    $Title = "РЎРѕР·РґР°С‚СЊ РѕРїРёСЃР°РЅРёРµ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ";
 include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 <!-- Body --> 
 <?
 echo "<h1>$Title</h1>";
-if (isset($_REQUEST['edit'])) { // Если надо что-то сохранять
+if (isset($_REQUEST['edit'])) { // Р•СЃР»Рё РЅР°РґРѕ С‡С‚Рѕ-С‚Рѕ СЃРѕС…СЂР°РЅСЏС‚СЊ
     if ($_REQUEST['edit'] == "") {
-        // Если нужно создать новую запись
+        // Р•СЃР»Рё РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ
         mysql_query(
             'INSERT INTO `Prepods`
             (`PrepodName`, `BirthDay`, `DeptId`, `EMail`, `Telephone`, `Status`, `Description`)
@@ -25,11 +25,11 @@ if (isset($_REQUEST['edit'])) { // Если надо что-то сохранять
         );
         $fL = new fileLoaded('PrepPhoto', $_SERVER["DOCUMENT_ROOT"].'/img/prepods/');
         $fL->resizeImage(200, 250);
-        // TODO Удалять "лишние" файлы, "'.basename($fL->ResultName).'",
+        // TODO РЈРґР°Р»СЏС‚СЊ "Р»РёС€РЅРёРµ" С„Р°Р№Р»С‹, "'.basename($fL->ResultName).'",
 
         $_REQUEST['id'] = mysql_insert_id();
         if ($fL->FileHasBeenLoaded) {
-            // Переименовываем файл, если запись только что была создана и файл был загружен
+            // РџРµСЂРµРёРјРµРЅРѕРІС‹РІР°РµРј С„Р°Р№Р», РµСЃР»Рё Р·Р°РїРёСЃСЊ С‚РѕР»СЊРєРѕ С‡С‚Рѕ Р±С‹Р»Р° СЃРѕР·РґР°РЅР° Рё С„Р°Р№Р» Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ
             rename(
                 $fL->ResultName,
                 $_SERVER["DOCUMENT_ROOT"].'/img/prepods/'.$_REQUEST['id'].$fL->getFileExtension()
@@ -41,7 +41,7 @@ if (isset($_REQUEST['edit'])) { // Если надо что-то сохранять
         }
     }
     else {
-        // Если нужно отредактировать старую запись
+        // Р•СЃР»Рё РЅСѓР¶РЅРѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃС‚Р°СЂСѓСЋ Р·Р°РїРёСЃСЊ
         $sql_str = 'UPDATE `Prepods` SET '.
             '`PrepodName` = "'.($_REQUEST['prepodName']).'", '.
             '`BirthDay` = "'.$_REQUEST['yearbirth'].'-'.$_REQUEST['monthbirth'].'-'.$_REQUEST['daybirth'].'", ';
@@ -73,24 +73,24 @@ if (isset($_REQUEST['edit'])) { // Если надо что-то сохранять
 
 <table class="optionsArrayTable">
     <tr>
-        <td>ФИО преподавателя</td>
+        <td>Р¤РРћ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ</td>
         <td><input type="text" class="longinput" name="prepodName" value="<? echo $S['PrepodName'] ?>"></td>
     </tr>
     <tr>
-        <td>Фотография</td>
+        <td>Р¤РѕС‚РѕРіСЂР°С„РёСЏ</td>
         <td>
             <?
             if (isset($S['ImgName'])):
-                echo "Загружен файл: ".$S['ImgName'].'; ' ; ?>
+                echo "Р—Р°РіСЂСѓР¶РµРЅ С„Р°Р№Р»: ".$S['ImgName'].'; ' ; ?>
                 <label><input type="checkbox" name="deleteImage" />
-                    <span class="alertMessage">Удалить изображение</span>
+                    <span class="alertMessage">РЈРґР°Р»РёС‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ</span>
                 </label><br />
             <? endif; ?>
             <input name="PrepPhoto" type="file">
         </td>
     </tr>
     <tr>
-        <td>День рождения</td>
+        <td>Р”РµРЅСЊ СЂРѕР¶РґРµРЅРёСЏ</td>
         <td>
             <select name="daybirth">
                 <option value="0">---</option>
@@ -111,14 +111,14 @@ if (isset($_REQUEST['edit'])) { // Если надо что-то сохранять
     <td><input class="longinput" type="text" name="EMail" value="<? echo $S['EMail'] ?>"></td>
   </tr>
   <tr>
-    <td>Телефон:</td>
+    <td>РўРµР»РµС„РѕРЅ:</td>
     <td><input class="longinput" type="text" name="Telephone" value="<? echo $S['Telephone'] ?>"></td>
   </tr>
   <tr>
-    <td>Кафедра</td>
+    <td>РљР°С„РµРґСЂР°</td>
     <td> 
       <select class="longselect" name="DeptId">
-        <option value="0"> - Не указана - </option>
+        <option value="0"> - РќРµ СѓРєР°Р·Р°РЅР° - </option>
         <?  
           $Res2 = mysql_query(
               'SELECT * FROM `Depts` ORDER BY `DeptName`'
@@ -134,7 +134,7 @@ if (isset($_REQUEST['edit'])) { // Если надо что-то сохранять
     </td>
   </tr>
   <tr>
-    <td>Должность</td>
+    <td>Р”РѕР»Р¶РЅРѕСЃС‚СЊ</td>
     <td>
       <select class="longselect" name="Status">
         <option value="0">---</option>
@@ -150,14 +150,14 @@ if (isset($_REQUEST['edit'])) { // Если надо что-то сохранять
     </td>
   </tr>
   <tr>
-    <td colspan="2">Описание
+    <td colspan="2">РћРїРёСЃР°РЅРёРµ
         <textarea cols="100" rows="10" name="description" class="high">
         <? echo $S['Description'] ?>
         </textarea>
     </td>
   </tr>
   </table>
-  <input type="submit" value="Сохранить">
+  <input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 </form>
 <!-- /Body -->
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/afterbody.php")?>

@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Ссылки на расписания групп</title>
+    <title>РЎСЃС‹Р»РєРё РЅР° СЂР°СЃРїРёСЃР°РЅРёСЏ РіСЂСѓРїРї</title>
 </head>
 <body>
 <?
@@ -9,7 +9,7 @@
     $Res = mysql_query('SELECT id, Title FROM Groups');
     while(($S = mysql_fetch_assoc($Res)) != false): ?>
         <a href="/schedule/raspisanie.php?Group=<? echo $S['id'] ?>">
-            Группа <? echo $S['Title'] ?>
+            Р“СЂСѓРїРїР° <? echo $S['Title'] ?>
         </a><br>
     <? endwhile;
     mysql_close($conn); ?>
