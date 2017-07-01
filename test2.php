@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_REQUEST['act']))
-    exit('Íå óêàçàí òèï îïåðàöèè');
+    exit('ÐÐµ ÑƒÐºÐ°Ð·Ð°Ð½ Ñ‚Ð¸Ð¿ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸');
 
 require_once 'config.php';
 $conn = db_connect();
@@ -9,10 +9,10 @@ $conn = db_connect();
 switch ($_REQUEST['act']) {
     case 'getFacultSpeciality':
         /*
-         * Ïîëó÷èòü ñïåöèàëüíîñòè ôàêóëüòåòà
+         * ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚Ð¸ Ñ„Ð°ÐºÑƒÐ»ÑŒÑ‚ÐµÑ‚Ð°
          */
         $IdArray   = array(0);
-        $SpecArray = array(win_utf8(' - Ñïåöèàëüíîñòü - '));
+        $SpecArray = array(win_utf8(' - Ð¡Ð¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ - '));
 
         $Res = mysql_query(
             'SELECT `id`, `Spec` FROM `Speciality` '.
@@ -29,7 +29,7 @@ switch ($_REQUEST['act']) {
 
     case 'findSubject' :
         /*
-         * Ïîèñê ïðåäìåòà ïî çàïðîñó
+         * ÐŸÐ¾Ð¸ÑÐº Ð¿Ñ€ÐµÐ´Ð¼ÐµÑ‚Ð° Ð¿Ð¾ Ð·Ð°Ð¿Ñ€Ð¾ÑÑƒ
          */
         $Res = mysql_query(
             'SELECT `id`, `Title`, `Description` FROM `Subjects` '.
@@ -52,12 +52,12 @@ switch ($_REQUEST['act']) {
 
     case 'DeletePage' :
         mysql_query('DELETE FROM `Pages` WHERE `id` = '.intval($_REQUEST['id']));
-        echo win_utf8("Ñòðàíèöà óäàëåíà");
+        echo win_utf8("Ð¡Ñ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° ÑƒÐ´Ð°Ð»ÐµÐ½Ð°");
     break;
 
-    case 'getSubjectList' :     // Åñëè íóæíî ïîëó÷èòü ñïèñîê ïðåäìåòîâ
+    case 'getSubjectList' :     // Ð•ÑÐ»Ð¸ Ð½ÑƒÐ¶Ð½Ð¾ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ ÑÐ¿Ð¸ÑÐ¾Ðº Ð¿Ñ€ÐµÐ´Ð¼ÐµÑ‚Ð¾Ð²
         if($_REQUEST['Spec'] == "0")
-            echo '{"id":["0"], "subject":[" - Ïðåäìåò - "], "descr":["Îïèñàíèå"]}';
+            echo '{"id":["0"], "subject":[" - ÐŸÑ€ÐµÐ´Ð¼ÐµÑ‚ - "], "descr":["ÐžÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ"]}';
         else {
             $QueryStr = 'SELECT `Subjects`.`id`, `Subjects`.`Title`, `Subjects`.`Description` FROM `Subjects` '.
                 'JOIN `SpecNSubj` ON `SpecNSubj`.`SubjectId` = `Subjects`.`id` '.
@@ -82,7 +82,7 @@ switch ($_REQUEST['act']) {
         }
     break;
 
-    case 'removing' :  // Åñëè óäàëÿåòñÿ ñîîòâåòñòâèå ñïåöèàëüíîñòåé è ñåìåñòðîâ
+    case 'removing' :  // Ð•ÑÐ»Ð¸ ÑƒÐ´Ð°Ð»ÑÐµÑ‚ÑÑ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð¸Ðµ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÐµÐ¹ Ð¸ ÑÐµÐ¼ÐµÑÑ‚Ñ€Ð¾Ð²
         mysql_query(
             'DELETE FROM `SpecNSubj` '.
             'WHERE `SubjectId` = '.str_replace('subjId', '', $_REQUEST['id']).
@@ -128,7 +128,7 @@ switch ($_REQUEST['act']) {
         }
     break;
 
-    case 'scheduleGet' : // Ïåðåäàåì êëèåíòó èíôîðìàöèþ î ðàñïèñàíèè
+    case 'scheduleGet' : // ÐŸÐµÑ€ÐµÐ´Ð°ÐµÐ¼ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ñƒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ñ€Ð°ÑÐ¿Ð¸ÑÐ°Ð½Ð¸Ð¸
         $Res = mysql_query(
             'SELECT * FROM `Schedule`
               WHERE `GroupId`="'.$_REQUEST['Group'].'" ORDER BY WeekDay, NLesson, Week'
@@ -150,7 +150,7 @@ switch ($_REQUEST['act']) {
         echo $JSONStr;
     break;
 
-    case 'groupGet' : // Ïîëó÷àåì ñïèñîê ãðóïï
+    case 'groupGet' : // ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ ÑÐ¿Ð¸ÑÐ¾Ðº Ð³Ñ€ÑƒÐ¿Ð¿
         $Res = mysql_query('SELECT * FROM `Groups` WHERE `SpecId` = '.$_REQUEST['SpecId']);
         $Groups   = array();
 
@@ -160,7 +160,7 @@ switch ($_REQUEST['act']) {
         echo '['.implode(', ', $Groups).']';
     break;
 
-    case 'createGroup': // Ñîçäàòü ãðóïïó
+    case 'createGroup': // Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð³Ñ€ÑƒÐ¿Ð¿Ñƒ
         mysql_query(
             'INSERT INTO `Groups` (`Title`, `SpecId`) VALUES ("'.
             utf8_win($_REQUEST['GroupName']).'", "'.$_REQUEST['SpecId'].'")'
@@ -168,14 +168,14 @@ switch ($_REQUEST['act']) {
         echo mysql_insert_id();
     break;
 
-    case 'miniChatAddPost': // Äîáàâèòü ñîîáùåíèå â ìèíè÷àò
+    case 'miniChatAddPost': // Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð² Ð¼Ð¸Ð½Ð¸Ñ‡Ð°Ñ‚
         mysql_query(
             'INSERT INTO `MiniChat` (`NickName`, `Content`) VALUES ("'.$_COOKIE['login'].'", "'.
             htmlspecialchars(utf8_win($_REQUEST['postTextarea'])).'")'
         );
     break;
 
-    case 'loadDeptPrepList' : // Ïèøåì ñïèñîê ïðåïîäîâ êàôåäðû
+    case 'loadDeptPrepList' : // ÐŸÐ¸ÑˆÐµÐ¼ ÑÐ¿Ð¸ÑÐ¾Ðº Ð¿Ñ€ÐµÐ¿Ð¾Ð´Ð¾Ð² ÐºÐ°Ñ„ÐµÐ´Ñ€Ñ‹
         $Res = mysql_query(
             'SELECT `Prepods`.`id`, `Prepods`.`PrepodName` FROM `Prepods` WHERE `DeptId` = '.$_REQUEST['DeptId']
         );
@@ -184,7 +184,7 @@ switch ($_REQUEST['act']) {
         }
     break;
 
-    case 'pollSave': // Ñîõðàíèòü âûáîð ãîëîñîâàíèÿ
+    case 'pollSave': // Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ñ‚ÑŒ Ð²Ñ‹Ð±Ð¾Ñ€ Ð³Ð¾Ð»Ð¾ÑÐ¾Ð²Ð°Ð½Ð¸Ñ
         $PollArray = mysql_fetch_assoc(mysql_query('SELECT * FROM `Polls` WHERE `id` = '.intval($_REQUEST['PollId'])));
         $R = explode('|', $PollArray['Result']);
         $R[$_REQUEST['pollsSelect']]++;
@@ -196,7 +196,7 @@ switch ($_REQUEST['act']) {
     break;
 
     default:
-        echo 'Íåïðàâèëüíî óêàçàí òèï îïåðàöèè';
+        echo 'ÐÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¾ ÑƒÐºÐ°Ð·Ð°Ð½ Ñ‚Ð¸Ð¿ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸';
     break;
 }
 

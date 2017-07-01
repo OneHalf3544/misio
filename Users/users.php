@@ -1,18 +1,18 @@
-<? $Title = "Пользователи сайта"; ?>
+<? $Title = "РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃР°Р№С‚Р°"; ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 <!-- Body --> 
 <h1><? echo $Title; ?></h1>
 <?
-{ //Рисуем "PageSelector"
+{ //Р РёСЃСѓРµРј "PageSelector"
   $PageSelector = '';
   $NUsers = 50;
   if(!isset($_REQUEST['FirstNUser'])) {
-    $FirstNUser = 0;} //Число юзеров на странице и номер первой новости
+    $FirstNUser = 0;} //Р§РёСЃР»Рѕ СЋР·РµСЂРѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ Рё РЅРѕРјРµСЂ РїРµСЂРІРѕР№ РЅРѕРІРѕСЃС‚Рё
   else {
     $FirstNUser = $_REQUEST['FirstNUser'];}
 
   $Res = mysql_query("select count(*) from `Users`");
-  $CountOfNews = mysql_result($Res, 0); //Количество новостей в базе
+  $CountOfNews = mysql_result($Res, 0); //РљРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІРѕСЃС‚РµР№ РІ Р±Р°Р·Рµ
   preg_match("/[^\?]+/", $_SERVER['REQUEST_URI'], $PageURL);
   for($i = 1; $i <= ceil($CountOfNews / $NUsers); $i++) {
     if ($_REQUEST['FirstNUser'] == ($i-1)*$NUsers)
@@ -26,12 +26,12 @@
 ?>
 <table class="usersTable">
   <tr>
-    <th>Логин</th>
-    <th>Имя</th>
-    <th>Фамилия</th>
-    <th>Факультет</th>
-    <th>Группа</th>
-    <th>Специальность</th>
+    <th>Р›РѕРіРёРЅ</th>
+    <th>РРјСЏ</th>
+    <th>Р¤Р°РјРёР»РёСЏ</th>
+    <th>Р¤Р°РєСѓР»СЊС‚РµС‚</th>
+    <th>Р“СЂСѓРїРїР°</th>
+    <th>РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ</th>
   </tr>
 <? 
   $Res = mysql_query(

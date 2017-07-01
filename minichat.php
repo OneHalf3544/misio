@@ -4,7 +4,7 @@ $(document).ready(function(){
         if ($('#postTextarea').val() == "")
             return false;
         $.post(AJAXBackendURL, {act:"miniChatAddPost", postTextarea:$('#postTextarea').val()}, function (data){
-            //Добавляем комментарий методами JavaScript, чтобы не обновлять страницу.
+            //Р”РѕР±Р°РІР»СЏРµРј РєРѕРјРјРµРЅС‚Р°СЂРёР№ РјРµС‚РѕРґР°РјРё JavaScript, С‡С‚РѕР±С‹ РЅРµ РѕР±РЅРѕРІР»СЏС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ.
             $('#mchatFrame').prepend($(
             '<div class="mchatpost">'+
                 '<div class="title2"><? echo $_COOKIE['login'] ?> </div>'+
@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 <!-- Site chat -->
 <div class="vBlock">
-  <div class="title">Мини-чат</div>
+  <div class="title">РњРёРЅРё-С‡Р°С‚</div>
   <div class="content">
     <div id="mchatFrame">
       <?
@@ -42,10 +42,10 @@ $(document).ready(function(){
     <? if (isset($_COOKIE['login'])) : ?>
     <form action="/minichat.php">
       <textarea id="postTextarea"></textarea>
-      <input id="miniChatSubmit" type="button" value="Отправить">
+      <input id="miniChatSubmit" type="button" value="РћС‚РїСЂР°РІРёС‚СЊ">
     </form>
     <? else: ?>
-      <div class="textForGuest">Чтобы добавлять сообщения, вам необходимо войти на сайт под своим логином.</div>
+      <div class="textForGuest">Р§С‚РѕР±С‹ РґРѕР±Р°РІР»СЏС‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІРѕР№С‚Рё РЅР° СЃР°Р№С‚ РїРѕРґ СЃРІРѕРёРј Р»РѕРіРёРЅРѕРј.</div>
     <? endif ?>
   </div>
 </div>

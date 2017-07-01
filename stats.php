@@ -1,10 +1,10 @@
-<? $Title = "Статистика" ?>
+<? $Title = "РЎС‚Р°С‚РёСЃС‚РёРєР°" ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 
 <!-- Body --> 
 <div class="textOfPage">
   <h1><? echo $Title ?></h1>
-  <p>Тут будет статистика
+  <p>РўСѓС‚ Р±СѓРґРµС‚ СЃС‚Р°С‚РёСЃС‚РёРєР°
 </div>
 <!-- /Body -->
 

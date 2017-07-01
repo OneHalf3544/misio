@@ -2,52 +2,52 @@
     require_once("utf8cp1251.php");
     require_once("fileLoaded.php");
 /***********************************************************************************
-Константы
+РљРѕРЅСЃС‚Р°РЅС‚С‹
 ***********************************************************************************/
 define('TempDir', $_SERVER["DOCUMENT_ROOT"].'/files/files/tmp/');
-// Постоянная часть заголовка
-define('CONSTANT_TITLE_PART', ' - МИСиО, сайт студентов приборфака СПбГМТУ');
-// Адрес бакэнда для Ajax-запросов
+// РџРѕСЃС‚РѕСЏРЅРЅР°СЏ С‡Р°СЃС‚СЊ Р·Р°РіРѕР»РѕРІРєР°
+define('CONSTANT_TITLE_PART', ' - РњРРЎРёРћ, СЃР°Р№С‚ СЃС‚СѓРґРµРЅС‚РѕРІ РїСЂРёР±РѕСЂС„Р°РєР° РЎРџР±Р“РњРўРЈ');
+// РђРґСЂРµСЃ Р±Р°РєСЌРЅРґР° РґР»СЏ Ajax-Р·Р°РїСЂРѕСЃРѕРІ
 define('AJAXBackendURL', '/test2.php');
 
-$WeekDays = array('Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота');
+$WeekDays = array('РџРѕРЅРµРґРµР»СЊРЅРёРє', 'Р’С‚РѕСЂРЅРёРє', 'РЎСЂРµРґР°', 'Р§РµС‚РІРµСЂРі', 'РџСЏС‚РЅРёС†Р°', 'РЎСѓР±Р±РѕС‚Р°');
 
 $MaterialType = array(
-    "News"      => "Новости",
-    "Files"     => "Файлы",
-    "Photos"    => "Фотографии",
-    "Prepods"   =>"Преподаватели",
-    "SitePages" =>"Страницы сайта"
+    "News"      => "РќРѕРІРѕСЃС‚Рё",
+    "Files"     => "Р¤Р°Р№Р»С‹",
+    "Photos"    => "Р¤РѕС‚РѕРіСЂР°С„РёРё",
+    "Prepods"   =>"РџСЂРµРїРѕРґР°РІР°С‚РµР»Рё",
+    "SitePages" =>"РЎС‚СЂР°РЅРёС†С‹ СЃР°Р№С‚Р°"
 );
 
 $FilesType = array(
-    "Bileti"        => "Билеты/вопросы/задачи",
-    "Kursovie"      => "Курсовые работы",
-    "Laboratornie"  => "Лабораторные",
-    "Lektsii"       => "Лекции",
-    "Metodichki"    => "Методички",
-    "Program ms"     => "Программы",
-    "Resheniya"     => "Решения типовиков/задач",
-    "Uchebniki"     => "Учебники",
-    "Shpargalki"    => "Шпаргалки",
-    "Other"         => "Прочее..",
+    "Bileti"        => "Р‘РёР»РµС‚С‹/РІРѕРїСЂРѕСЃС‹/Р·Р°РґР°С‡Рё",
+    "Kursovie"      => "РљСѓСЂСЃРѕРІС‹Рµ СЂР°Р±РѕС‚С‹",
+    "Laboratornie"  => "Р›Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ",
+    "Lektsii"       => "Р›РµРєС†РёРё",
+    "Metodichki"    => "РњРµС‚РѕРґРёС‡РєРё",
+    "Program ms"     => "РџСЂРѕРіСЂР°РјРјС‹",
+    "Resheniya"     => "Р РµС€РµРЅРёСЏ С‚РёРїРѕРІРёРєРѕРІ/Р·Р°РґР°С‡",
+    "Uchebniki"     => "РЈС‡РµР±РЅРёРєРё",
+    "Shpargalki"    => "РЁРїР°СЂРіР°Р»РєРё",
+    "Other"         => "РџСЂРѕС‡РµРµ..",
 );
   
 $PrepodStatus = array(
-    "none"        => "Не указан",
-    "Assist"      => "Асистент",
-    "Prep"        => "Преподаватель",
-    "StPrep"      => "Старший преподаватель",
-    "Dotsent"     => "Доцент",
-    "Proffessor"  => "Профессор"
+    "none"        => "РќРµ СѓРєР°Р·Р°РЅ",
+    "Assist"      => "РђСЃРёСЃС‚РµРЅС‚",
+    "Prep"        => "РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ",
+    "StPrep"      => "РЎС‚Р°СЂС€РёР№ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЊ",
+    "Dotsent"     => "Р”РѕС†РµРЅС‚",
+    "Proffessor"  => "РџСЂРѕС„РµСЃСЃРѕСЂ"
 );
 
 /***********************************************************************************
-Функции необходимые для страниц сайта
+Р¤СѓРЅРєС†РёРё РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ СЃС‚СЂР°РЅРёС† СЃР°Р№С‚Р°
 ***********************************************************************************/
 
 /*
- * Возвращает ссылку с параметрами поиска (нужно вставить в аттрибут href)
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃСЃС‹Р»РєСѓ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РїРѕРёСЃРєР° (РЅСѓР¶РЅРѕ РІСЃС‚Р°РІРёС‚СЊ РІ Р°С‚С‚СЂРёР±СѓС‚ href)
  */
 function filterFilesUrlLink($Facult, $Speciality, $Semestr, $Subject, 
         $PrepodId, $MaterialType, $Sorting, $ShowUnmarkedFiles) {
@@ -67,7 +67,7 @@ function echoSemestrNamesSelect($SemestrId = -1) {
         $SemestrId = $_COOKIE['SemestrId'];
     ?>
     <select id="Semestr" name="Semestr" class="shortselect">
-    <option value="0">Все</option>
+    <option value="0">Р’СЃРµ</option>
     <?
       $Res = mysql_query("SELECT `id`, `SemName` FROM `SemestrNames`");
       while(($SemArray = mysql_fetch_assoc($Res)) != false):
@@ -85,7 +85,7 @@ function echoSemestrNamesSelect($SemestrId = -1) {
 <? }
 
 /*
- * Выводит select со списком предметов указанной специальности и семестра
+ * Р’С‹РІРѕРґРёС‚ select СЃРѕ СЃРїРёСЃРєРѕРј РїСЂРµРґРјРµС‚РѕРІ СѓРєР°Р·Р°РЅРЅРѕР№ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё Рё СЃРµРјРµСЃС‚СЂР°
  */
 function echoSubjectSelect($SubjectId, $SpecId = -1, $SemestrId = -1) {
     if ($SpecId == -1
@@ -104,8 +104,8 @@ function echoSubjectSelect($SubjectId, $SpecId = -1, $SemestrId = -1) {
         ' ORDER BY `Subjects`.`Title`'
     ); ?>
 <select class="longselect" name="Subject" id="Subject">
-    <option value=""> - Не указан - </option>
-    <option value="0">Не выбран</option>
+    <option value=""> - РќРµ СѓРєР°Р·Р°РЅ - </option>
+    <option value="0">РќРµ РІС‹Р±СЂР°РЅ</option>
     <? 
     if($SpecId != '')
         while(($S = mysql_fetch_assoc($Res)) != false):
@@ -119,11 +119,11 @@ function echoSubjectSelect($SubjectId, $SpecId = -1, $SemestrId = -1) {
 <? }
 
 /*
- * Выводит select со списком групп
+ * Р’С‹РІРѕРґРёС‚ select СЃРѕ СЃРїРёСЃРєРѕРј РіСЂСѓРїРї
  */
 function echoGroupSelect($GroupId = -1) { ?>
     <select id="group" name="Group">
-    <option value="0">- Группа -</option>
+    <option value="0">- Р“СЂСѓРїРїР° -</option>
     <?
       if ($GroupId == -1 && isset($_COOKIE['GroupId']))
         $GroupId = $_COOKIE['GroupId'];
@@ -149,15 +149,15 @@ function materialURL($TypeOfMat, $NMaterial){
     return $result;
 }
 
-function profileURL ($Login) { // Возвращает ссылку на профиль по логину пользователя
-    return "<a href=\"/Users/profile.php?LogName=$Login\" title=\"Профиль пользователя\">$Login</a>";
+function profileURL ($Login) { // Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃСЃС‹Р»РєСѓ РЅР° РїСЂРѕС„РёР»СЊ РїРѕ Р»РѕРіРёРЅСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+    return "<a href=\"/Users/profile.php?LogName=$Login\" title=\"РџСЂРѕС„РёР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ\">$Login</a>";
 }
 
 function pageSelector ($FirstNMat, $NMat, $MatType) {
   $PageSelector = '';
 
   $Res = mysql_query('SELECT COUNT(*) FROM `'.$MatType.'`');
-  $CountOfMat = mysql_result($Res, 0); //Количество новостей в базе
+  $CountOfMat = mysql_result($Res, 0); //РљРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІРѕСЃС‚РµР№ РІ Р±Р°Р·Рµ
   
   for($i = 1; $i <= ceil($CountOfMat / $NMat); $i++) {
     if ($FirstNMat == ($i-1)*$NMat)
@@ -174,7 +174,7 @@ function PrepodOptions ($PrepodId) {
       'SELECT `Prepods`.`id`, `Prepods`.`PrepodName` FROM `Prepods`
       WHERE `DeptId` = 0 ORDER BY `PrepodName`'
     );
-    $result = '<optgroup label="Кафедра не указана">';
+    $result = '<optgroup label="РљР°С„РµРґСЂР° РЅРµ СѓРєР°Р·Р°РЅР°">';
     while(($S = mysql_fetch_row($Res)) != false):
         if($PrepodId == $S[0]) {
             $result .= "<option value=\"$S[0]\" selected=\"selected\">$S[1]</option>";
@@ -195,7 +195,7 @@ function PrepodOptions ($PrepodId) {
         if($LastDeptId != $S['DeptId']):
             if(isset($LastDeptId))
                 $result .=  '</optgroup>';
-            $result .= '<optgroup label="Кафедра &quot;'.$S['DeptName'].'&quot;">';
+            $result .= '<optgroup label="РљР°С„РµРґСЂР° &quot;'.$S['DeptName'].'&quot;">';
         endif;
 
         if($PrepodId == $S['id'])
@@ -211,7 +211,7 @@ function PrepodOptions ($PrepodId) {
 
 function PrepodSelect($PrepodId = 0) {
     $result = '<select name="PrepodId" class="longselect">'.
-        '<option value="0"> - Не выбран - </option>'.
+        '<option value="0"> - РќРµ РІС‹Р±СЂР°РЅ - </option>'.
         PrepodOptions($PrepodId).
     '</select>';
     return $result;
@@ -219,7 +219,7 @@ function PrepodSelect($PrepodId = 0) {
 
 function echoFacultSelect($FacultId = -1) { ?>
     <select id="Facult" name="Facult" class="longselect">
-    <option value="0"> - Факультет - </option>
+    <option value="0"> - Р¤Р°РєСѓР»СЊС‚РµС‚ - </option>
         <?
         if ($FacultId == -1 && isset($_COOKIE['FacultId']))
             $FacultId = $_COOKIE['FacultId'];
@@ -239,7 +239,7 @@ function echoSpecialitySelect($FacultId = -1, $SpecId = -1) {
     if ($SpecId == -1 && isset($_COOKIE['SpecId']))
         $SpecId = $_COOKIE['SpecId']; ?>
     <select id="Speciality" name="Speciality" class="longselect" <? if ($FacultId == 0) echo 'disabled="disabled"'; ?>>
-    <option value="0"> - Специальность - </option>
+    <option value="0"> - РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ - </option>
     <? $Res = mysql_query("SELECT `id`, `Spec` FROM `Speciality` WHERE `FacultId` = $FacultId ORDER BY `Spec`");
     while(($SpecArray = mysql_fetch_row($Res)) != false) {
         if ($SpecId == $SpecArray[0])
@@ -283,18 +283,18 @@ function echoYearsOptions ($Year) {
     }
 }
 
-function add_p_Tag($InputStr) { // Функция замены переноса строк на теги <p>
+function add_p_Tag($InputStr) { // Р¤СѓРЅРєС†РёСЏ Р·Р°РјРµРЅС‹ РїРµСЂРµРЅРѕСЃР° СЃС‚СЂРѕРє РЅР° С‚РµРіРё <p>
     return ('<p>'.str_replace("\n", '<p>', $InputStr));
 }
 
-function db_connect () { // Подключеем базу данных
+function db_connect () { // РџРѕРґРєР»СЋС‡РµРµРј Р±Р°Р·Сѓ РґР°РЅРЅС‹С…
     $conn = mysql_connect("database", "misio8", "oinYax5d");
     if (!$conn) {
-        echoRedirectHtml ('/mysqlerror.php', 'Ошибка');
+        echoRedirectHtml ('/mysqlerror.php', 'РћС€РёР±РєР°');
         exit();
     }
     if (!mysql_select_db("misio8")) {
-        echoRedirectHtml ('/mysqlerror.php', 'Ошибка: ' . mysql_error());
+        echoRedirectHtml ('/mysqlerror.php', 'РћС€РёР±РєР°: ' . mysql_error());
         exit();
     }
     return ($conn);
@@ -317,36 +317,36 @@ function echoRedirectHtml ($link, $text) {
 <? }
 
 /***********************************************************************************
-Функция img_resize(): генерация thumbnails
-Параметры:
-  $src             - имя исходного файла
-  $dest            - имя генерируемого файла
-  $width, $height  - ширина и высота генерируемого изображения, в пикселях
-Необязательные параметры:
-  $rgb             - цвет фона, по умолчанию - белый
-  $quality         - качество генерируемого JPEG, по умолчанию - максимальное (100)
+Р¤СѓРЅРєС†РёСЏ img_resize(): РіРµРЅРµСЂР°С†РёСЏ thumbnails
+РџР°СЂР°РјРµС‚СЂС‹:
+  $src             - РёРјСЏ РёСЃС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
+  $dest            - РёРјСЏ РіРµРЅРµСЂРёСЂСѓРµРјРѕРіРѕ С„Р°Р№Р»Р°
+  $width, $height  - С€РёСЂРёРЅР° Рё РІС‹СЃРѕС‚Р° РіРµРЅРµСЂРёСЂСѓРµРјРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ, РІ РїРёРєСЃРµР»СЏС…
+РќРµРѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹:
+  $rgb             - С†РІРµС‚ С„РѕРЅР°, РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - Р±РµР»С‹Р№
+  $quality         - РєР°С‡РµСЃС‚РІРѕ РіРµРЅРµСЂРёСЂСѓРµРјРѕРіРѕ JPEG, РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ (100)
 ***********************************************************************************/
 function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
 {
   if (!file_exists($src)) {
-    //echo 'Файл не существует';
+    //echo 'Р¤Р°Р№Р» РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚';
     return false;
   }
 
   $size = getimagesize($src);
 
   if ($size === false) {
-    //echo 'Не могу получить размер';
+    //echo 'РќРµ РјРѕРіСѓ РїРѕР»СѓС‡РёС‚СЊ СЂР°Р·РјРµСЂ';
     return false;
   }
 
-  // Определяем исходный формат по MIME-информации, предоставленной
-  // функцией getimagesize, и выбираем соответствующую формату
-  // imagecreatefrom-функцию.
+  // РћРїСЂРµРґРµР»СЏРµРј РёСЃС…РѕРґРЅС‹Р№ С„РѕСЂРјР°С‚ РїРѕ MIME-РёРЅС„РѕСЂРјР°С†РёРё, РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅРЅРѕР№
+  // С„СѓРЅРєС†РёРµР№ getimagesize, Рё РІС‹Р±РёСЂР°РµРј СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰СѓСЋ С„РѕСЂРјР°С‚Сѓ
+  // imagecreatefrom-С„СѓРЅРєС†РёСЋ.
   $format = strtolower(substr($size['mime'], strpos($size['mime'], '/')+1));
   $icfunc = "imagecreatefrom" . $format;
   if (!function_exists($icfunc)) {
-    //echo 'Не умею создавать картинки';
+    //echo 'РќРµ СѓРјРµСЋ СЃРѕР·РґР°РІР°С‚СЊ РєР°СЂС‚РёРЅРєРё';
     return false;
   }
 

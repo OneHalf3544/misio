@@ -1,6 +1,6 @@
-<? $Title = "Информация о пользователе" ?>
+<? $Title = "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ" ?>
 <? include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
-<? //Этот модуль отображает профиль пользователя, заданного запросом GET
+<? //Р­С‚РѕС‚ РјРѕРґСѓР»СЊ РѕС‚РѕР±СЂР°Р¶Р°РµС‚ РїСЂРѕС„РёР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, Р·Р°РґР°РЅРЅРѕРіРѕ Р·Р°РїСЂРѕСЃРѕРј GET
 $LogName = $_GET['LogName'];
 
 $Res = mysql_query("SELECT * FROM `Users` WHERE `NickName` = \"$LogName\"");
@@ -14,10 +14,10 @@ $SurName = $ProfArray['SurName'];
 $Avatar = $ProfArray['Avatar'];
 switch ($ProfArray['Gender']) {
   case 1: 
-    $Gender = "Мужской"; 
+    $Gender = "РњСѓР¶СЃРєРѕР№"; 
     break;
   case 2: 
-    $Gender = "Женский";
+    $Gender = "Р–РµРЅСЃРєРёР№";
     break;
 }
 $HomePage = $ProfArray['HomePage'];
@@ -26,26 +26,26 @@ $TitleProf = $ProfArray['Title'];
 $GroupName = $ProfArray['GroupName'];
 $Rights = $ProfArray['Rights'];
 ?>
-<h1><? echo $Title?></h1> [<a href="/Users/register.php?LogName=<? echo $LogName?>">Редактировать</a>]
+<h1><? echo $Title?></h1> [<a href="/Users/register.php?LogName=<? echo $LogName?>">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>]
     <table>
-      <tr><td width=150px>Пользователь:</td><td><? echo $LogName ?></td></tr>
-      <tr><td>Права пользователя:</td><td><? echo $Rights ?></td></tr>
-      <tr><td>Фамилия:</td><td><? echo $SurName ?></td></tr>
-      <tr><td>Имя:</td><td><? echo $FirstName ?></td></tr>
-      <tr><td>Регистрационый IP:</td><td><? echo $ProfArray['RegIP']; ?></td></tr>
-      <tr><td>Дата регистрации:</td><td><? echo date("d.m.y", $ProfArray['RegDate']); ?></td></tr>
-      <tr><td>Дата входа:</td><td></td></tr>
-      <tr><td>Дата рождения:</td><td><? echo $BirthDay ?></td></tr>
+      <tr><td width=150px>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ:</td><td><? echo $LogName ?></td></tr>
+      <tr><td>РџСЂР°РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:</td><td><? echo $Rights ?></td></tr>
+      <tr><td>Р¤Р°РјРёР»РёСЏ:</td><td><? echo $SurName ?></td></tr>
+      <tr><td>РРјСЏ:</td><td><? echo $FirstName ?></td></tr>
+      <tr><td>Р РµРіРёСЃС‚СЂР°С†РёРѕРЅС‹Р№ IP:</td><td><? echo $ProfArray['RegIP']; ?></td></tr>
+      <tr><td>Р”Р°С‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё:</td><td><? echo date("d.m.y", $ProfArray['RegDate']); ?></td></tr>
+      <tr><td>Р”Р°С‚Р° РІС…РѕРґР°:</td><td></td></tr>
+      <tr><td>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</td><td><? echo $BirthDay ?></td></tr>
 <?
       if($_GET['LogName']==$_COOKIE['login']) {
         echo "<tr><td>E-Mail</td><td>$EMail</td></tr>";}
       else
-        echo "<tr><td>E-Mail</td><td>EMail скрыт</td></tr>";
+        echo "<tr><td>E-Mail</td><td>EMail СЃРєСЂС‹С‚</td></tr>";
 ?>
       <tr><td>ICQ:</td><td><? echo $ProfArray['ICQ']; ?></td></tr>
-      <tr><td>Группа:</td><td><? echo $GroupName ?></td></tr>
-      <tr><td>Факультет:</td><td><? echo $Facult ?></td></tr>
-      <tr><td>Город:</td><td><? echo $ProfArray['City']; ?></td></tr>
+      <tr><td>Р“СЂСѓРїРїР°:</td><td><? echo $GroupName ?></td></tr>
+      <tr><td>Р¤Р°РєСѓР»СЊС‚РµС‚:</td><td><? echo $Facult ?></td></tr>
+      <tr><td>Р“РѕСЂРѕРґ:</td><td><? echo $ProfArray['City']; ?></td></tr>
     </table>
 
 <? include($_SERVER["DOCUMENT_ROOT"]."/Design/afterbody.php") ?>

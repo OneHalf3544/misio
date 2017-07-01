@@ -4,8 +4,8 @@
 <!-- addfile logo --> 
 <a href="/files/addfile.php">
     <div id="addfileplease">
-        <p>Прими участие в проекте - добавь свою работу!<br>
-        Внеси свой вклад в развитие сайта: сдал курсовик/лабу или что-либо еще - поделись своим вариантом с однокурсниками!
+        <p>РџСЂРёРјРё СѓС‡Р°СЃС‚РёРµ РІ РїСЂРѕРµРєС‚Рµ - РґРѕР±Р°РІСЊ СЃРІРѕСЋ СЂР°Р±РѕС‚Сѓ!<br>
+        Р’РЅРµСЃРё СЃРІРѕР№ РІРєР»Р°Рґ РІ СЂР°Р·РІРёС‚РёРµ СЃР°Р№С‚Р°: СЃРґР°Р» РєСѓСЂСЃРѕРІРёРє/Р»Р°Р±Сѓ РёР»Рё С‡С‚Рѕ-Р»РёР±Рѕ РµС‰Рµ - РїРѕРґРµР»РёСЃСЊ СЃРІРѕРёРј РІР°СЂРёР°РЅС‚РѕРј СЃ РѕРґРЅРѕРєСѓСЂСЃРЅРёРєР°РјРё!
     </div>
   </a>
 <!-- /addfile logo -->
@@ -23,9 +23,9 @@
 
 <? /*
 <div class="vBlock">
-<div class="title">Кто Онлайн?</div>
+<div class="title">РљС‚Рѕ РћРЅР»Р°Р№РЅ?</div>
 <?php
-  // Запишемся в базу
+  // Р—Р°РїРёС€РµРјСЃСЏ РІ Р±Р°Р·Сѓ
   if (isset($_COOKIE['login']))
     $UserLogin = $_COOKIE['login'];
   else 
@@ -47,19 +47,19 @@
   );
   mysql_query("DELETE FROM `WhoOnLine` WHERE `LastVisitTime` < \"".(time()-300)."\"");
   $GCount = mysql_result(mysql_query("SELECT count(*) FROM `WhoOnLine` WHERE `NickName` LIKE \"guest%\""), 0);
-  // Выведем списк "Кто ОнЛайн?"
+  // Р’С‹РІРµРґРµРј СЃРїРёСЃРє "РљС‚Рѕ РћРЅР›Р°Р№РЅ?"
   $Res = mysql_query("SELECT * FROM `WhoOnLine` WHERE `NickName` not like \"guest%\"");
-  $UsersArr = mysql_fetch_row($Res); //Массив с содержимым строки таблицы (Ник, время посл.посещения, страница)  
+  $UsersArr = mysql_fetch_row($Res); //РњР°СЃСЃРёРІ СЃ СЃРѕРґРµСЂР¶РёРјС‹Рј СЃС‚СЂРѕРєРё С‚Р°Р±Р»РёС†С‹ (РќРёРє, РІСЂРµРјСЏ РїРѕСЃР».РїРѕСЃРµС‰РµРЅРёСЏ, СЃС‚СЂР°РЅРёС†Р°)  
 while ($UsersArr != false) {  
   $UserList = $UserList.' <a href="/Users/profile.php?LogName='.$UsersArr[0].'" title="'.$UsersArr[2].'">'.$UsersArr[0].'</a>';
   $UCount = $UCount+1;
-  $UsersArr = mysql_fetch_row($Res); //Массив с содержимым строки таблицы (Ник, время посл.посещения, страница)
+  $UsersArr = mysql_fetch_row($Res); //РњР°СЃСЃРёРІ СЃ СЃРѕРґРµСЂР¶РёРјС‹Рј СЃС‚СЂРѕРєРё С‚Р°Р±Р»РёС†С‹ (РќРёРє, РІСЂРµРјСЏ РїРѕСЃР».РїРѕСЃРµС‰РµРЅРёСЏ, СЃС‚СЂР°РЅРёС†Р°)
 }
 ?>
 <div class="content">
-  <div class="tOnline">Онлайн всего: <? echo $UCount+$GCount; ?></div>
-  <div class="gOnline">Гостей: <? echo $GCount; ?></div>
-  <div class="uOnline">Пользователей: <? echo $UCount; ?></div>
+  <div class="tOnline">РћРЅР»Р°Р№РЅ РІСЃРµРіРѕ: <? echo $UCount+$GCount; ?></div>
+  <div class="gOnline">Р“РѕСЃС‚РµР№: <? echo $GCount; ?></div>
+  <div class="uOnline">РџРѕР»СЊР·РѕРІР°С‚РµР»РµР№: <? echo $UCount; ?></div>
   <? echo $UserList; ?>
 </div>
 

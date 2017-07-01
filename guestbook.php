@@ -1,5 +1,5 @@
-<? // TODO äîäåëàòü ãîñòåâóþ êíèãó
-$Title = "Ãîñòåâàÿ êíèãà"; ?>
+<? // TODO Ð´Ð¾Ð´ÐµÐ»Ð°Ñ‚ÑŒ Ð³Ð¾ÑÑ‚ÐµÐ²ÑƒÑŽ ÐºÐ½Ð¸Ð³Ñƒ
+$Title = "Ð“Ð¾ÑÑ‚ÐµÐ²Ð°Ñ ÐºÐ½Ð¸Ð³Ð°"; ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
 <!-- Body -->
 <h1><? echo $Title; ?></h1>

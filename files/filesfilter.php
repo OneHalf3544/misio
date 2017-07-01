@@ -1,7 +1,7 @@
 <script type="text/javascript">
   function addSubjects(objsubj, tlocation) {
     $('#Subject').empty();
-    $('#Subject').append($('<option value="">Все</option><option value="0">Не указан</option>'));
+    $('#Subject').append($('<option value="">Р’СЃРµ</option><option value="0">РќРµ СѓРєР°Р·Р°РЅ</option>'));
     if (objsubj.id != "") {
       $('#Subject').attr('disabled', '');
       for(var i = 0; i < (objsubj.id.length); i++) {
@@ -23,7 +23,7 @@
 <table class="optionsArrayTable">
 <tbody>
 <tr>
-    <td>Факультет: </td>
+    <td>Р¤Р°РєСѓР»СЊС‚РµС‚: </td>
     <td><?
         if(isset($_REQUEST['Facult']))
             echoFacultSelect($_REQUEST['Facult']);
@@ -32,7 +32,7 @@
     </td>
 </tr>
 <tr>
-    <td>Специальность: </td>
+    <td>РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ: </td>
     <td><?
         if(isset($_REQUEST['Speciality']))
             echoSpecialitySelect($_REQUEST['Facult'], $_REQUEST['Speciality']);
@@ -41,7 +41,7 @@
     </td>
 </tr>
 <tr>
-    <td>Семестр: </td>
+    <td>РЎРµРјРµСЃС‚СЂ: </td>
     <td><? 
         if(isset($_REQUEST['Semestr']))
             echoSemestrNamesSelect($_REQUEST['Semestr']);
@@ -49,7 +49,7 @@
             echoSemestrNamesSelect(); ?>
     </td>
 </tr>
-<tr><td>Предмет: </td>
+<tr><td>РџСЂРµРґРјРµС‚: </td>
     <td>
     <?
     if(isset($_REQUEST['Speciality']) && isset($_REQUEST['Semestr']))
@@ -60,11 +60,11 @@
     else
         echoSubjectSelect($_REQUEST['Subject']);
     ?></td></tr>
-<tr><td>Преподаватель: </td>
+<tr><td>РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ: </td>
     <td><? echo PrepodSelect($_REQUEST['PrepodId']) ?></td></tr>
-<tr><td>Тип материала: </td>
+<tr><td>РўРёРї РјР°С‚РµСЂРёР°Р»Р°: </td>
   <td><select name="MaterialType" class="shortselect">
-    <option value="0">Все</option>
+    <option value="0">Р’СЃРµ</option>
     <? foreach($FilesType as $key => $value): ?>
         <option value="<? echo $key; ?>"
             <? if($key == $_REQUEST['MaterialType']) echo 'selected="selected"'; ?>>
@@ -72,22 +72,22 @@
         </option>
     <? endforeach; ?>
   </select></td></tr>
-<tr><td>Сортировать по: </td>
+<tr><td>РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРѕ: </td>
   <td><select id="Sort" name="Sorting" class="shortselect">
-    <option value="1" <? if($_REQUEST['Sorting'] == 1) echo ' selected="selected"'; ?>>Дате</option>
-    <option value="2" <? if($_REQUEST['Sorting'] == 2) echo ' selected="selected"'; ?>>Названию</option>
-    <option value="3" <? if($_REQUEST['Sorting'] == 3) echo ' selected="selected"'; ?>>Размеру</option>
-    <option value="4" <? if($_REQUEST['Sorting'] == 4) echo ' selected="selected"'; ?>>Типу</option>
-    <option value="5" <? if($_REQUEST['Sorting'] == 5) echo ' selected="selected"'; ?>>Комментариям</option>
-    <option value="6" <? if($_REQUEST['Sorting'] == 6) echo ' selected="selected"'; ?>>Загрузкам</option>
+    <option value="1" <? if($_REQUEST['Sorting'] == 1) echo ' selected="selected"'; ?>>Р”Р°С‚Рµ</option>
+    <option value="2" <? if($_REQUEST['Sorting'] == 2) echo ' selected="selected"'; ?>>РќР°Р·РІР°РЅРёСЋ</option>
+    <option value="3" <? if($_REQUEST['Sorting'] == 3) echo ' selected="selected"'; ?>>Р Р°Р·РјРµСЂСѓ</option>
+    <option value="4" <? if($_REQUEST['Sorting'] == 4) echo ' selected="selected"'; ?>>РўРёРїСѓ</option>
+    <option value="5" <? if($_REQUEST['Sorting'] == 5) echo ' selected="selected"'; ?>>РљРѕРјРјРµРЅС‚Р°СЂРёСЏРј</option>
+    <option value="6" <? if($_REQUEST['Sorting'] == 6) echo ' selected="selected"'; ?>>Р—Р°РіСЂСѓР·РєР°Рј</option>
   </select></td></tr>
 <tr><td colspan="2"><label>
     <input type="checkbox" name="ShowUnmarkedFiles" value="yes"
         <? if($_REQUEST['ShowUnmarkedFiles'] == "yes") echo 'checked="checked"' ?> />
-    Показывать файлы с неуказанными категориями
+    РџРѕРєР°Р·С‹РІР°С‚СЊ С„Р°Р№Р»С‹ СЃ РЅРµСѓРєР°Р·Р°РЅРЅС‹РјРё РєР°С‚РµРіРѕСЂРёСЏРјРё
 </label></td></tr>
 </tbody>
 </table>
-<input type="submit" value="Фильтровать">
+<input type="submit" value="Р¤РёР»СЊС‚СЂРѕРІР°С‚СЊ">
 </form>
-<span id="slideFilterForm" class="slideFilterFormClosed">Фильтрация</span>
+<span id="slideFilterForm" class="slideFilterFormClosed">Р¤РёР»СЊС‚СЂР°С†РёСЏ</span>

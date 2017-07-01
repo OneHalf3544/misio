@@ -1,19 +1,19 @@
 <hr>
-<h1 class="commentsTitle">Комментарии пользователей:</h1>
+<h1 class="commentsTitle">РљРѕРјРјРµРЅС‚Р°СЂРёРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№:</h1>
 <div class="pageSelector">
     <?
-    /* Этот файл должен включаться коммандой "include",
-    а переменные $TypeOfMat и $NMaterial должны быть определены "снаружи" */
+    /* Р­С‚РѕС‚ С„Р°Р№Р» РґРѕР»Р¶РµРЅ РІРєР»СЋС‡Р°С‚СЊСЃСЏ РєРѕРјРјР°РЅРґРѕР№ "include",
+    Р° РїРµСЂРµРјРµРЅРЅС‹Рµ $TypeOfMat Рё $NMaterial РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РѕРїСЂРµРґРµР»РµРЅС‹ "СЃРЅР°СЂСѓР¶Рё" */
 
-  //Рисуем "PageSelector"
-  $NComm = 50; //Число комментариев на странице
+  //Р РёСЃСѓРµРј "PageSelector"
+  $NComm = 50; //Р§РёСЃР»Рѕ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ
   if(!isset($_GET['FirstNComm'])) {
-    $FirstNComm = 0;} //Номер первого комментария
+    $FirstNComm = 0;} //РќРѕРјРµСЂ РїРµСЂРІРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
   else {
     $FirstNComm = $_GET['FirstNComm'];}
 
   $Res = mysql_query("SELECT count(*) FROM `Comments` WHERE `TypeOfMat` = \"$TypeOfMat\" and `NMaterial` = $NMaterial");
-  $CountOfComm = mysql_result($Res, 0); //Количество комментариев в базе
+  $CountOfComm = mysql_result($Res, 0); //РљРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РІ Р±Р°Р·Рµ
   if ($CountOfComm > $NComm) {
     for($i = 1; $i <= ceil($CountOfComm / $NComm); $i++) {
         switch ($TypeOfMat) {
@@ -29,13 +29,13 @@
   } ?>
 </div>
 <?
-// Выбираем заданное количество ($NComm) комментариев из базы, начиная с заданного ($FirstNComm).
+// Р’С‹Р±РёСЂР°РµРј Р·Р°РґР°РЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ ($NComm) РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РёР· Р±Р°Р·С‹, РЅР°С‡РёРЅР°СЏ СЃ Р·Р°РґР°РЅРЅРѕРіРѕ ($FirstNComm).
 $Res = mysql_query(
     "SELECT * FROM `Comments` WHERE `TypeOfMat` = \"$TypeOfMat\" and `NMaterial` = $NMaterial
     ORDER BY `DateOfAdding` ASC LIMIT $FirstNComm, $NComm"
 );
 while (($CommArray = mysql_fetch_assoc($Res)) != false):
-  // Далее следует кусок html-кода, соответствующий одному комментарию ?>
+  // Р”Р°Р»РµРµ СЃР»РµРґСѓРµС‚ РєСѓСЃРѕРє html-РєРѕРґР°, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РѕРґРЅРѕРјСѓ РєРѕРјРјРµРЅС‚Р°СЂРёСЋ ?>
     <div class="comments">
       <div class="title">
         <a href="$Profile"><? echo profileURL($CommArray['Author']); ?></a>

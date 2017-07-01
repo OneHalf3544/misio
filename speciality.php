@@ -1,5 +1,5 @@
-<? // TODO Доделать страничку специальностей
-$Title = "Специальности" ?>
+<? // TODO Р”РѕРґРµР»Р°С‚СЊ СЃС‚СЂР°РЅРёС‡РєСѓ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚РµР№
+$Title = "РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё" ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
 <!-- Body -->
 <h1><? echo $Title; ?></h1>
@@ -16,7 +16,7 @@ $Title = "Специальности" ?>
           </h2>
           <div class="content">
             <? echo $S['Description']; ?>
-              <h3>Факультет: </h3><? echo $S['FacultName']; ?>
+              <h3>Р¤Р°РєСѓР»СЊС‚РµС‚: </h3><? echo $S['FacultName']; ?>
           </div>
         </div>
     <? endwhile; ?>

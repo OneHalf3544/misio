@@ -1,11 +1,11 @@
-<? $Title = "Карта сайта" ?>
+<? $Title = "РљР°СЂС‚Р° СЃР°Р№С‚Р°" ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 
 <!-- Body --> 
 <div class="textOfPage">
   <h1><? echo $Title; ?></h1>
   <ul>
-      <li>Страницы сайта</li>
+      <li>РЎС‚СЂР°РЅРёС†С‹ СЃР°Р№С‚Р°</li>
     <ul>
     <? 
       $Res = mysql_query('SELECT `id`, `Title` FROM `Pages` ORDER BY `Title`');
@@ -13,33 +13,33 @@
         echo "<li><a href=\"/Pages.php?id=".$S['id']."\">".$S['Title']."</a></li>";
       }
     ?>
-        <li><a href="/SitePages/editsitepages.php">Редактор страниц</a></li>
+        <li><a href="/SitePages/editsitepages.php">Р РµРґР°РєС‚РѕСЂ СЃС‚СЂР°РЅРёС†</a></li>
     </ul>
     
-    <li> Преподаватели
+    <li> РџСЂРµРїРѕРґР°РІР°С‚РµР»Рё
     <ul>
-        <li> <a href="/prepods/prepods.php">Список преподавателей</a></li>
-        <li> <a href="/prepods/prepodedit.php">Создание описания преподавателя</a></li>
-        <li> <a href="/prepods/depts.php">Список кафедр университета</a></li>
+        <li> <a href="/prepods/prepods.php">РЎРїРёСЃРѕРє РїСЂРµРїРѕРґР°РІР°С‚РµР»РµР№</a></li>
+        <li> <a href="/prepods/prepodedit.php">РЎРѕР·РґР°РЅРёРµ РѕРїРёСЃР°РЅРёСЏ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ</a></li>
+        <li> <a href="/prepods/depts.php">РЎРїРёСЃРѕРє РєР°С„РµРґСЂ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°</a></li>
     </ul>
     
-    <li> Расписание
+    <li> Р Р°СЃРїРёСЃР°РЅРёРµ
     <ul>
-      <li> <a href="/schedule/raspisanie.php">Расписание групп</a></li>
-      <li> <a href="/schedule/schededit.php">Редактор расписания</a></li>
-      <li> <a href="/specmaker.php">Редактор специальностей</a></li>
+      <li> <a href="/schedule/raspisanie.php">Р Р°СЃРїРёСЃР°РЅРёРµ РіСЂСѓРїРї</a></li>
+      <li> <a href="/schedule/schededit.php">Р РµРґР°РєС‚РѕСЂ СЂР°СЃРїРёСЃР°РЅРёСЏ</a></li>
+      <li> <a href="/specmaker.php">Р РµРґР°РєС‚РѕСЂ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚РµР№</a></li>
     </ul>
     
-    <li> Пользователи сайта
+    <li> РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃР°Р№С‚Р°
     <ul>
-      <li> <a href="/Users/users.php">Список пользователей</a></li>
-      <li> <a href="/Users/register.php">Ваш профиль</a></li>
+      <li> <a href="/Users/users.php">РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</a></li>
+      <li> <a href="/Users/register.php">Р’Р°С€ РїСЂРѕС„РёР»СЊ</a></li>
     </ul>
     
-    <li> Файлы
+    <li> Р¤Р°Р№Р»С‹
     <ul>
-      <li> <a href="/files/files.php">Файлы</a></li>
-      <li> <a href="/files/addfile.php">Добавить файл</a></li>
+      <li> <a href="/files/files.php">Р¤Р°Р№Р»С‹</a></li>
+      <li> <a href="/files/addfile.php">Р”РѕР±Р°РІРёС‚СЊ С„Р°Р№Р»</a></li>
     </ul>
     
   </ul>

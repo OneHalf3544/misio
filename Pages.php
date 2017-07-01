@@ -1,4 +1,4 @@
-<? $Title = "Ïðî÷àÿ èíôîðìàöèÿ"; ?>
+<? $Title = "ÐŸÑ€Ð¾Ñ‡Ð°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ"; ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 <!-- Body --> 
 <?

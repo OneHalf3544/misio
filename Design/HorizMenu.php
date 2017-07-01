@@ -1,5 +1,5 @@
 <?php /*
-Этот блок содержит верхнее горизонтальное меню. 
+Р­С‚РѕС‚ Р±Р»РѕРє СЃРѕРґРµСЂР¶РёС‚ РІРµСЂС…РЅРµРµ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРµ РјРµРЅСЋ. 
 */ ?>
 <!-- Horiz Menu -->
 <div class="hMenuDiv"> 
@@ -7,33 +7,33 @@
   <tbody>
     <tr>
       <td class="hMenuLeft"> </td>
-      <td class="hMenuTd"><a href="http://misio.hut1.ru/">На главную</a></td>
+      <td class="hMenuTd"><a href="http://misio.hut1.ru/">РќР° РіР»Р°РІРЅСѓСЋ</a></td>
       <td class="hMenuSeparator"> </td>
-      <td class="hMenuTd"><a href="/files/files.php">Файлы</a></td>
+      <td class="hMenuTd"><a href="/files/files.php">Р¤Р°Р№Р»С‹</a></td>
       <td class="hMenuSeparator"> </td>
     <?php
     if(isset($_COOKIE['login'])): ?>
-      <td class="hMenuTd"><a href="/photo.php">Фотоальбом</a></td>
+      <td class="hMenuTd"><a href="/photo.php">Р¤РѕС‚РѕР°Р»СЊР±РѕРј</a></td>
       <td class="hMenuSeparator"> </td>
-      <td class="hMenuTd"><a href="/Users/profile.php?LogName=<? echo $_COOKIE['login']; ?>">Мой профиль</a></td>
+      <td class="hMenuTd"><a href="/Users/profile.php?LogName=<? echo $_COOKIE['login']; ?>">РњРѕР№ РїСЂРѕС„РёР»СЊ</a></td>
       <td class="hMenuSeparator"> </td>
-      <td class="hMenuTd"><a href="/logout.php" onclick="return logout()">Выход</a></td>
+      <td class="hMenuTd"><a href="/logout.php" onclick="return logout()">Р’С‹С…РѕРґ</a></td>
     <? else: ?>
-      <td class="hMenuTd"><a href="/Users/register.php">Регистрация</a></td>
+      <td class="hMenuTd"><a href="/Users/register.php">Р РµРіРёСЃС‚СЂР°С†РёСЏ</a></td>
     <? endif; ?>
       <td class="hMenuRight"> </td>
     </tr>
   </tbody>
   </table>
 
-<? /* Выводим приветствие и дату */ ?>
-<p class="greatings">Приветствую Вас, 
+<? /* Р’С‹РІРѕРґРёРј РїСЂРёРІРµС‚СЃС‚РІРёРµ Рё РґР°С‚Сѓ */ ?>
+<p class="greatings">РџСЂРёРІРµС‚СЃС‚РІСѓСЋ Р’Р°СЃ, 
 <? if(isset($_COOKIE['login'])): ?>
     <b><? echo $_COOKIE['login'] ?></b>;
 <? else: ?>
-    <b>Гость</b>
+    <b>Р“РѕСЃС‚СЊ</b>
 <? endif; ?>
-Текущая дата: <i> <? echo date("d.m.y").', '.date("H:i"); ?>
+РўРµРєСѓС‰Р°СЏ РґР°С‚Р°: <i> <? echo date("d.m.y").', '.date("H:i"); ?>
 </i></p>
 </div>
 <!-- /Horiz Menu -->

@@ -13,7 +13,7 @@
   });
   </script>
 
-  <div class="title">Наш опрос</div>
+  <div class="title">РќР°С€ РѕРїСЂРѕСЃ</div>
   <div class="content">
     <form action="/poll.php">
     <? 
@@ -27,7 +27,7 @@
       }
       $PollArray = mysql_fetch_assoc($Res);
       if ($PollArray == false) 
-        echo 'Нет такого опроса';
+        echo 'РќРµС‚ С‚Р°РєРѕРіРѕ РѕРїСЂРѕСЃР°';
       echo $PollArray['Question'], "<br>";
       $V = explode('|', $PollArray['Variants']);
       $R = explode('|', $PollArray['Result']);
@@ -42,13 +42,13 @@
         else {
             echo '<li>'.$V[$i].
               '<img style="display:block" src="/img/pollResultBar.png" width="'. $R[$i] / array_sum($R) * 100*0.75 .'%" height="8px">'.
-              '<span class="voteNumber">(Голосов: '.$R[$i].')</span>';
+              '<span class="voteNumber">(Р“РѕР»РѕСЃРѕРІ: '.$R[$i].')</span>';
           }
       }
     
       if (!$alreadyVoted) { ?>
         <input name="PollId" type="hidden" value="<? echo $PollArray['id'] ?>">
-        <input id="btnPollApply" type="submit" value="Ответить">
+        <input id="btnPollApply" type="submit" value="РћС‚РІРµС‚РёС‚СЊ">
       <? } 
       else 
         echo '</ul>';

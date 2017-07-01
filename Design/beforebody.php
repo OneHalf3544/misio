@@ -1,5 +1,5 @@
 <?php
-  session_start(); // Çàïóñêàåì ñåññèþ PHP
+  session_start(); // Ð—Ð°Ð¿ÑƒÑÐºÐ°ÐµÐ¼ ÑÐµÑÑÐ¸ÑŽ PHP
 
 require_once ($_SERVER["DOCUMENT_ROOT"].'/config.php');
 $conn = db_connect ();

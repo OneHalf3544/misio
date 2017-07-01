@@ -5,8 +5,8 @@
   $descr = htmlspecialchars(utf8_win($_REQUEST['descr']));
   
   $conn = mysql_connect("database", "misio8", "oinYax5d");
-  if (!$conn) die("Не могу подключиться к базе");
-  mysql_select_db("misio8") or die ('Ошибка: ' . mysql_error());
+  if (!$conn) die("РќРµ РјРѕРіСѓ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє Р±Р°Р·Рµ");
+  mysql_select_db("misio8") or die ('РћС€РёР±РєР°: ' . mysql_error());
   
   $StrQuery = "UPDATE `Subjects` SET `Title`=\"$subject\", `Description`=\"$descr\" WHERE `id` = $id";
   

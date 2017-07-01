@@ -1,5 +1,5 @@
-<? // TODO Сделать PageSelector
-$Title = "Управление комментариями"; ?>
+<? // TODO РЎРґРµР»Р°С‚СЊ PageSelector
+$Title = "РЈРїСЂР°РІР»РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё"; ?>
 
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
 <!-- Body -->
@@ -16,7 +16,7 @@ $Title = "Управление комментариями"; ?>
                 <? echo $S['Text'] ?>
                 <div class="Details">
                     <a href="<? echo materialURL($S['TypeOfMat'], $S['NMaterial']); ?>">
-                        Материал (<? echo $MaterialType[$S['TypeOfMat']]; ?>)
+                        РњР°С‚РµСЂРёР°Р» (<? echo $MaterialType[$S['TypeOfMat']]; ?>)
                     </a>
                 </div>
             </div>

@@ -1,10 +1,10 @@
-<? $Title = "Фотоальбом" ?>
+<? $Title = "Р¤РѕС‚РѕР°Р»СЊР±РѕРј" ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 
 <!-- Body --> 
 <div class="textOfPage">
-  <h1>Фотоальбом</h1>
-  <p>Тут будут фотки
+  <h1>Р¤РѕС‚РѕР°Р»СЊР±РѕРј</h1>
+  <p>РўСѓС‚ Р±СѓРґСѓС‚ С„РѕС‚РєРё
 </div>
 <!-- /Body -->
 

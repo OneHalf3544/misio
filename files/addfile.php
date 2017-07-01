@@ -1,12 +1,12 @@
 <?php //move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)
 if(isset($_REQUEST['id']))
-$Title = "Изменить файл";
+$Title = "РР·РјРµРЅРёС‚СЊ С„Р°Р№Р»";
 else
-$Title = "Добавить файл";
+$Title = "Р”РѕР±Р°РІРёС‚СЊ С„Р°Р№Р»";
 include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php"); 
 if (!isset($_COOKIE['login'])) { ?>
-    <h1>Добавление файла</h1>
-    Нужно быть зарегистрированным пользователем, чтобы добавлять файлы
+    <h1>Р”РѕР±Р°РІР»РµРЅРёРµ С„Р°Р№Р»Р°</h1>
+    РќСѓР¶РЅРѕ Р±С‹С‚СЊ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, С‡С‚РѕР±С‹ РґРѕР±Р°РІР»СЏС‚СЊ С„Р°Р№Р»С‹
     <? include($_SERVER["DOCUMENT_ROOT"]."/Design/afterbody.php");
     exit;
 }
@@ -17,7 +17,7 @@ if(isset($_REQUEST['EditId'])) {
         $AssignableFileType[$key] = $key;
       }
     }
-    if ($_REQUEST['EditId'] != '') { // Если нужно сохранить запись
+    if ($_REQUEST['EditId'] != '') { // Р•СЃР»Рё РЅСѓР¶РЅРѕ СЃРѕС…СЂР°РЅРёС‚СЊ Р·Р°РїРёСЃСЊ
         mysql_query(
             'UPDATE `Files` SET
             `Title`     = "'.$_REQUEST['Title'].'",
@@ -30,16 +30,16 @@ if(isset($_REQUEST['EditId'])) {
         );
         $_REQUEST['id'] = intval($_REQUEST['EditId']);
     }
-    else { // Если нужно создать запись
+    else { // Р•СЃР»Рё РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ Р·Р°РїРёСЃСЊ
         $tempName = $_FILES['LoadedFile']['tmp_name'];
         $NewName = $_FILES['LoadedFile']['name'];
         $UploadDir = $_SERVER["DOCUMENT_ROOT"].'/materials/';
         $ResultName = $UploadDir.$NewName;
-        $size = $_FILES['LoadedFile']['size']; // TODO Добавить проверку ошибок
-        move_uploaded_file($tempName, $ResultName); //TODO учесть возвращаемое значение
+        $size = $_FILES['LoadedFile']['size']; // TODO Р”РѕР±Р°РІРёС‚СЊ РїСЂРѕРІРµСЂРєСѓ РѕС€РёР±РѕРє
+        move_uploaded_file($tempName, $ResultName); //TODO СѓС‡РµСЃС‚СЊ РІРѕР·РІСЂР°С‰Р°РµРјРѕРµ Р·РЅР°С‡РµРЅРёРµ
         chmod($ResultName, 0644);
 
-        // TODO Дата, файл, размер
+        // TODO Р”Р°С‚Р°, С„Р°Р№Р», СЂР°Р·РјРµСЂ
         mysql_query(
             'INSERT INTO `Files` (`Title`, `Message`, `Size`, `DateOfAdding`, `NickName`, `URL`, `SubjectId`, `PrepodId`, `Author`, `Type`)
             VALUES (
@@ -70,7 +70,7 @@ if(isset($_REQUEST['EditId'])) {
 ?>
 <script type="text/javascript">
     function addSubjects(objsubj, tlocation) {
-        $('#Subject').empty(); $('#Subject').append($('<option value="0">Все</option>'));
+        $('#Subject').empty(); $('#Subject').append($('<option value="0">Р’СЃРµ</option>'));
         if (objsubj.id != "") {
             $('#Subject').attr('disabled', '');
             for(var i = 0; i < (objsubj.id.length); i++) {
@@ -81,35 +81,35 @@ if(isset($_REQUEST['EditId'])) {
 </script>
 <script type="text/javascript" src="/jscript/selectcascade.js"></script>
 <h1><? echo $Title ?></h1>
-<a class="backLink" href="javascript:history.back()">Вернуться назад</a>
+<a class="backLink" href="javascript:history.back()">Р’РµСЂРЅСѓС‚СЊСЃСЏ РЅР°Р·Р°Рґ</a>
 <form action="/files/addfile.php" method="post" enctype="multipart/form-data">
 <input type="hidden" name="id"     value="<? echo $_REQUEST['id'] ?>">
 <input type="hidden" name="EditId" value="<? echo $_REQUEST['id'] ?>">
 <table class="optionsArrayTable">
 <tbody>
 <tr>
-  <td>Заголовок</td>
+  <td>Р—Р°РіРѕР»РѕРІРѕРє</td>
   <td><input class="longinput" name="Title" type="text" value="<? echo $FileArray['Title'] ?>"></td>
 </tr>
 <tr>
-  <td>Описание</td>
+  <td>РћРїРёСЃР°РЅРёРµ</td>
   <td><textarea name="Message"><? echo $FileArray['Message'] ?></textarea></td>
 </tr>
 <tr>
-  <td>Файл</td>
+  <td>Р¤Р°Р№Р»</td>
   <td>
   <? if(isset($FileArray['URL'])) 
-    echo '<span style="color:red;">('.$FileArray['Size'].'кб) Загрузить другой файл  </span>' ?>
+    echo '<span style="color:red;">('.$FileArray['Size'].'РєР±) Р—Р°РіСЂСѓР·РёС‚СЊ РґСЂСѓРіРѕР№ С„Р°Р№Р»  </span>' ?>
   <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
   <input class="longinput" name="LoadedFile" type="file"></td>
 </tr>
-<tr><td>Факультет: </td>
+<tr><td>Р¤Р°РєСѓР»СЊС‚РµС‚: </td>
     <td><? echoFacultSelect() ?></td></tr>
-<tr><td>Специальность: </td>
+<tr><td>РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ: </td>
   <td><? echoSpecialitySelect(); ?></td></tr>
-<tr><td>Семестр: </td>
+<tr><td>РЎРµРјРµСЃС‚СЂ: </td>
   <td><select id="Semestr" name="Semestr" class="shortselect">
-    <option value="0">Все</option>
+    <option value="0">Р’СЃРµ</option>
     <? $Res = mysql_query("SELECT `id`, `SemName` FROM `SemestrNames`");
     $SemArray = mysql_fetch_assoc($Res);
     while($SemArray != false) {
@@ -117,9 +117,9 @@ if(isset($_REQUEST['EditId'])) {
         $SemArray = mysql_fetch_assoc($Res);
     } ?>
   </select></td></tr>
-<tr><td>Предмет: </td>
+<tr><td>РџСЂРµРґРјРµС‚: </td>
   <td><select id="Subject" name="Subject" class="longselect">
-    <option value="0">Не указан</option>
+    <option value="0">РќРµ СѓРєР°Р·Р°РЅ</option>
     <? if($FileArray['SubjectId'] != 0): ?>
       <option value="<? echo $FileArray['SubjectId'] ?>" selected="selected">
         <? echo $FileArray['SubjTitle'] ?>
@@ -129,7 +129,7 @@ if(isset($_REQUEST['EditId'])) {
 </tr>
 
 <tr>
-  <td>Тип материала</td>
+  <td>РўРёРї РјР°С‚РµСЂРёР°Р»Р°</td>
   <td>
     <? $TypeArr = explode(',', $FileArray['Type']);
     foreach ($FilesType as $key => $value): ?>
@@ -139,24 +139,24 @@ if(isset($_REQUEST['EditId'])) {
   </td>
 </tr>
 <tr>
-  <td>Преподаватель:</td>
+  <td>РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ:</td>
   <td>
   <select class="longselect" name="PrepodId">
-    <option value="0"> - Не выбран - </option>
+    <option value="0"> - РќРµ РІС‹Р±СЂР°РЅ - </option>
     <? echo PrepodOptions($FileArray['PrepodId']); ?>
   </select>
   </td>
 </tr>
 
 <tr>
-  <td>Автор:</td>
+  <td>РђРІС‚РѕСЂ:</td>
   <td><input class="longinput" name="Author" type="text" value="<? echo $FileArray['Author']?>" /></td>
 </tr>
 <tr>
-  <td colspan="2"><label><input type="checkbox" />Материал недоступен для просмотра</label>
+  <td colspan="2"><label><input type="checkbox" />РњР°С‚РµСЂРёР°Р» РЅРµРґРѕСЃС‚СѓРїРµРЅ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР°</label>
 </tr>
 </tbody>
 </table>
-<input type="submit" value="Применить" />
+<input type="submit" value="РџСЂРёРјРµРЅРёС‚СЊ" />
 </form>
 <? include($_SERVER["DOCUMENT_ROOT"]."/Design/afterbody.php"); ?>

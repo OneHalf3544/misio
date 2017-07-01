@@ -1,14 +1,14 @@
 <?php
 // session_start();
-// Ðàáîòà ñ cookie äîëæíà áûòü ïðîèçâåäåíà äî çàãîëîâêà
+// Ð Ð°Ð±Ð¾Ñ‚Ð° Ñ cookie Ð´Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð¸Ð·Ð²ÐµÐ´ÐµÐ½Ð° Ð´Ð¾ Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²ÐºÐ°
 require_once 'config.php';
 $conn = db_connect();
-// Áåðåì õåø ïàðîëÿ èç áàçû
+// Ð‘ÐµÑ€ÐµÐ¼ Ñ…ÐµÑˆ Ð¿Ð°Ñ€Ð¾Ð»Ñ Ð¸Ð· Ð±Ð°Ð·Ñ‹
 $LogName = $_POST['LogName'];
 $SqlStr = "SELECT `Passwd` FROM `Users` WHERE `NickName` = \"$LogName\"";
 $Res = mysql_query($SqlStr);
 if(mysql_num_rows($Res) == 0) {
-    $OutputStr = "Â áàçå íåò òàêîãî ïîëüçîâàòåëÿ";
+    $OutputStr = "Ð’ Ð±Ð°Ð·Ðµ Ð½ÐµÑ‚ Ñ‚Ð°ÐºÐ¾Ð³Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ";
 }
 else {
     $md5hash = mysql_result($Res, 0); 
@@ -16,15 +16,15 @@ else {
     preg_match('/(\$1\$[^\$]+)/',$md5hash,$salt);
     $salt = $salt[0];
     if ($md5hash == crypt($password,$salt)) {
-        //Åñëè ïàðîëü âåðíûé:
+        //Ð•ÑÐ»Ð¸ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð²ÐµÑ€Ð½Ñ‹Ð¹:
         if(@$_REQUEST['AJAXused'] == true)
             $OutputStr = "Success";
         else
-            $OutputStr = "Àâòîðèçàöèÿ ïðîøëà óñïåøíî";
+            $OutputStr = "ÐÐ²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð¿Ñ€Ð¾ÑˆÐ»Ð° ÑƒÑÐ¿ÐµÑˆÐ½Ð¾";
         setcookie("login", $_POST['LogName'], 1000000000*$_POST['RememberMe']);
-        setcookie("guest", ""); //Óäàëèì êóêó ñ íîìåðîì ãîñòÿ
+        setcookie("guest", ""); //Ð£Ð´Ð°Ð»Ð¸Ð¼ ÐºÑƒÐºÑƒ Ñ Ð½Ð¾Ð¼ÐµÑ€Ð¾Ð¼ Ð³Ð¾ÑÑ‚Ñ
 
-        // Çàïèñûâàåì â ïåðåìåííûå ñåññèè ôàêóëüòåò è ñïåöèàëüíîñòü þçåðà
+        // Ð—Ð°Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼ Ð² Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ðµ ÑÐµÑÑÐ¸Ð¸ Ñ„Ð°ÐºÑƒÐ»ÑŒÑ‚ÐµÑ‚ Ð¸ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ ÑŽÐ·ÐµÑ€Ð°
         $S = mysql_fetch_assoc(mysql_query(
             'SELECT `Users`.`SpecId`, `Speciality`.`FacultId`, `Users`.`SemestrId`, `Users`.`GroupId` FROM `Users`
             LEFT JOIN `Speciality` ON `Speciality`.`id` = `Users`.`SpecId`
@@ -37,7 +37,7 @@ else {
         setcookie('GroupId',   $S['GroupId'],   1000000000*$_POST['RememberMe']);
     }
     else
-        $OutputStr = 'Ïàðîëü íåâåðíûé';
+        $OutputStr = 'ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð½ÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹';
 }
 mysql_close($conn);
 // 

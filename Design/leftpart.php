@@ -1,44 +1,44 @@
 <?php /*
-Этот блок содержит левую колонку сайта. Т.е. главное меню (Вертикальное), форму входа, категории, теги и сайты-друзья
+Р­С‚РѕС‚ Р±Р»РѕРє СЃРѕРґРµСЂР¶РёС‚ Р»РµРІСѓСЋ РєРѕР»РѕРЅРєСѓ СЃР°Р№С‚Р°. Рў.Рµ. РіР»Р°РІРЅРѕРµ РјРµРЅСЋ (Р’РµСЂС‚РёРєР°Р»СЊРЅРѕРµ), С„РѕСЂРјСѓ РІС…РѕРґР°, РєР°С‚РµРіРѕСЂРёРё, С‚РµРіРё Рё СЃР°Р№С‚С‹-РґСЂСѓР·СЊСЏ
 */ ?>
 <td id="leftcolumn" class="menuColumn">
 <!-- Site Menu -->
 <div class="vBlock" id="vertMenu">
-    <div class="title">Меню сайта</div>
+    <div class="title">РњРµРЅСЋ СЃР°Р№С‚Р°</div>
     <div class="content">
     <ul>
-        <li><a href="/" title="На главную страницу сайта">Главная</a></li>
-        <li><a href="/specmaker.php">Редактор специальностей</a></li>
-        <li><a href="/sitemap.php">Карта сайта</a></li>
-        <li><a href="/guestbook.php">Гостевая книга</a></li>
-        <li><a href="/Pages.php?id=5">Об университете</a></li>
-        <li><a href="/Pages.php?id=4">Администраторы</a></li>
-        <li><a href="http://www.spgmtu.ru/forum/">Форум</a></li>
-        <li><a href="/stats.php">Статистика</a></li>
-        <li><a href="/files/addfile.php">Добавить файл</a></li>
-        <li><a href="/addfoto.php">Добавить фото</a></li>
-        <li><a href="/Users/users.php">Пользователи</a></li>
-        <li><a href="/schedule/raspisanie.php">Расписание</a></li>
-        <li><a href="/prepods/prepods.php">Преподаватели</a></li>
+        <li><a href="/" title="РќР° РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ СЃР°Р№С‚Р°">Р“Р»Р°РІРЅР°СЏ</a></li>
+        <li><a href="/specmaker.php">Р РµРґР°РєС‚РѕСЂ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚РµР№</a></li>
+        <li><a href="/sitemap.php">РљР°СЂС‚Р° СЃР°Р№С‚Р°</a></li>
+        <li><a href="/guestbook.php">Р“РѕСЃС‚РµРІР°СЏ РєРЅРёРіР°</a></li>
+        <li><a href="/Pages.php?id=5">РћР± СѓРЅРёРІРµСЂСЃРёС‚РµС‚Рµ</a></li>
+        <li><a href="/Pages.php?id=4">РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂС‹</a></li>
+        <li><a href="http://www.spgmtu.ru/forum/">Р¤РѕСЂСѓРј</a></li>
+        <li><a href="/stats.php">РЎС‚Р°С‚РёСЃС‚РёРєР°</a></li>
+        <li><a href="/files/addfile.php">Р”РѕР±Р°РІРёС‚СЊ С„Р°Р№Р»</a></li>
+        <li><a href="/addfoto.php">Р”РѕР±Р°РІРёС‚СЊ С„РѕС‚Рѕ</a></li>
+        <li><a href="/Users/users.php">РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</a></li>
+        <li><a href="/schedule/raspisanie.php">Р Р°СЃРїРёСЃР°РЅРёРµ</a></li>
+        <li><a href="/prepods/prepods.php">РџСЂРµРїРѕРґР°РІР°С‚РµР»Рё</a></li>
     </ul>
     </div>
 </div>
 <!-- /Site Menu -->
 
-<!-- Форма входа -->
+<!-- Р¤РѕСЂРјР° РІС…РѕРґР° -->
 <?php if(!isset($_COOKIE['login'])): ?>
   <div class="vBlock">
-    <div class="title">Форма входа</div>
+    <div class="title">Р¤РѕСЂРјР° РІС…РѕРґР°</div>
     <div class="content">
       <form action="/login.php" method=POST>
-        <label>Логин:<br />
-        <input id="LogName" type="text" name="LogName" value="Введите имя..."></label>
-        <label>Пароль:<br>
+        <label>Р›РѕРіРёРЅ:<br />
+        <input id="LogName" type="text" name="LogName" value="Р’РІРµРґРёС‚Рµ РёРјСЏ..."></label>
+        <label>РџР°СЂРѕР»СЊ:<br>
         <input id="LogPass" type="password" name="LogPass" value=""></label><br>
-        <label><input type="checkbox" id="RemMe" name="RememberMe" value="0">Запомнить меня</label><br />
-        <input id="loginButton" type=submit value="Вход"><br />
+        <label><input type="checkbox" id="RemMe" name="RememberMe" value="0">Р—Р°РїРѕРјРЅРёС‚СЊ РјРµРЅСЏ</label><br />
+        <input id="loginButton" type=submit value="Р’С…РѕРґ"><br />
         <script type="text/javascript">
-          $('#loginButton').click(function() { // Проверяем логин/пароль
+          $('#loginButton').click(function() { // РџСЂРѕРІРµСЂСЏРµРј Р»РѕРіРёРЅ/РїР°СЂРѕР»СЊ
             var RM = 0;
             if($('#RemMe').attr('checked') == 'checked') 
               RM = 1;
@@ -46,55 +46,55 @@
                 RememberMe:RM, AJAXused: true}, function(data){
                 data = removeAdvertisement(data);
               if (data == "Success") {
-                window.location.reload(); //Если авторизация успешна, обновляем страницу.
+                window.location.reload(); //Р•СЃР»Рё Р°РІС‚РѕСЂРёР·Р°С†РёСЏ СѓСЃРїРµС€РЅР°, РѕР±РЅРѕРІР»СЏРµРј СЃС‚СЂР°РЅРёС†Сѓ.
               }
-              else { // Иначе показываем юзеру, что не так
+              else { // РРЅР°С‡Рµ РїРѕРєР°Р·С‹РІР°РµРј СЋР·РµСЂСѓ, С‡С‚Рѕ РЅРµ С‚Р°Рє
                 alert(data); 
               }
             });
             return false;
           });
         </script>
-        <a href="/">Забыл пароль</a><br />
-        <a href="/Users/register.php">Зарегистрироваться</a>
+        <a href="/">Р—Р°Р±С‹Р» РїР°СЂРѕР»СЊ</a><br />
+        <a href="/Users/register.php">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a>
       </form>
     </div>
   </div>
 <?php endif ?>
-<!-- /Форма входа -->
+<!-- /Р¤РѕСЂРјР° РІС…РѕРґР° -->
  
 <!-- Friends -->
 <div class="vBlock" id="friendSites">
-<div class="title">Сайты</div>
+<div class="title">РЎР°Р№С‚С‹</div>
 <div class="content">
  <ul>
-  <li><a href="http://misio.ucoz.ru" target="_blank" title="Старый сайт: misio.ucoz.ru">МИСиО на ucoz'е</a></li>
+  <li><a href="http://misio.ucoz.ru" target="_blank" title="РЎС‚Р°СЂС‹Р№ СЃР°Р№С‚: misio.ucoz.ru">РњРРЎРёРћ РЅР° ucoz'Рµ</a></li>
   <li><a href="http://www.smtu.ru/index2.html" target="_blank" 
-    title="Админ там, похоже, помер. Поэтому инфы там почти нет. www.smtu.ru">Официальный сайт СПбГМТУ</a></li>
-  <li><a href="http://vkontakte.ru/club22883" target="_blank" title="Группа вконтакте.">Приборостроительный факультет вконтакте</a></li>
-  <li><a href="http://vt.homisoft.com" target="_blank" title="Сайт группы специальности 'Вычислительная техника'">Сайт группы ВТ</a></li>
-  <li><a href="http://www.student-mtu.narod.ru/findex.htm" target="_blank" title="Сайт группы факультета корабельной энергетики и автоматики (специальнось - судовые энергетические установки, вроде). Советую туда заглянуть, там много полезных статей об универе, общагах и т.д. И файлов по учебе там тоже навалом.">Неофициальный сайт студентов СПбГМТУ</a></li>
-  <li><a href="http://dieseldvs.ru/" target="_blank" title="Еще один сайт группы с факультета энергетики и автоматики. Со специальности 'Двигатели внутреннего сгорания'. Каталог файлов там тоже обширный, загляните туда тоже.">Сайт дизелистов</a></li>
-  <li><a href="http://smtueco.ru/index.shtml" target="_blank">Сайт экологов</a></li>
-  <li><a href="http://www.twirpx.com" target="_blank">Общирная студенческая библиотека</a></li>
-  <li><a href="http://www.iti.spb.ru/rus/index.shtml" target="_blank">Институт информационных технологий СПбГМТУ</a></li>
+    title="РђРґРјРёРЅ С‚Р°Рј, РїРѕС…РѕР¶Рµ, РїРѕРјРµСЂ. РџРѕСЌС‚РѕРјСѓ РёРЅС„С‹ С‚Р°Рј РїРѕС‡С‚Рё РЅРµС‚. www.smtu.ru">РћС„РёС†РёР°Р»СЊРЅС‹Р№ СЃР°Р№С‚ РЎРџР±Р“РњРўРЈ</a></li>
+  <li><a href="http://vkontakte.ru/club22883" target="_blank" title="Р“СЂСѓРїРїР° РІРєРѕРЅС‚Р°РєС‚Рµ.">РџСЂРёР±РѕСЂРѕСЃС‚СЂРѕРёС‚РµР»СЊРЅС‹Р№ С„Р°РєСѓР»СЊС‚РµС‚ РІРєРѕРЅС‚Р°РєС‚Рµ</a></li>
+  <li><a href="http://vt.homisoft.com" target="_blank" title="РЎР°Р№С‚ РіСЂСѓРїРїС‹ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё 'Р’С‹С‡РёСЃР»РёС‚РµР»СЊРЅР°СЏ С‚РµС…РЅРёРєР°'">РЎР°Р№С‚ РіСЂСѓРїРїС‹ Р’Рў</a></li>
+  <li><a href="http://www.student-mtu.narod.ru/findex.htm" target="_blank" title="РЎР°Р№С‚ РіСЂСѓРїРїС‹ С„Р°РєСѓР»СЊС‚РµС‚Р° РєРѕСЂР°Р±РµР»СЊРЅРѕР№ СЌРЅРµСЂРіРµС‚РёРєРё Рё Р°РІС‚РѕРјР°С‚РёРєРё (СЃРїРµС†РёР°Р»СЊРЅРѕСЃСЊ - СЃСѓРґРѕРІС‹Рµ СЌРЅРµСЂРіРµС‚РёС‡РµСЃРєРёРµ СѓСЃС‚Р°РЅРѕРІРєРё, РІСЂРѕРґРµ). РЎРѕРІРµС‚СѓСЋ С‚СѓРґР° Р·Р°РіР»СЏРЅСѓС‚СЊ, С‚Р°Рј РјРЅРѕРіРѕ РїРѕР»РµР·РЅС‹С… СЃС‚Р°С‚РµР№ РѕР± СѓРЅРёРІРµСЂРµ, РѕР±С‰Р°РіР°С… Рё С‚.Рґ. Р С„Р°Р№Р»РѕРІ РїРѕ СѓС‡РµР±Рµ С‚Р°Рј С‚РѕР¶Рµ РЅР°РІР°Р»РѕРј.">РќРµРѕС„РёС†РёР°Р»СЊРЅС‹Р№ СЃР°Р№С‚ СЃС‚СѓРґРµРЅС‚РѕРІ РЎРџР±Р“РњРўРЈ</a></li>
+  <li><a href="http://dieseldvs.ru/" target="_blank" title="Р•С‰Рµ РѕРґРёРЅ СЃР°Р№С‚ РіСЂСѓРїРїС‹ СЃ С„Р°РєСѓР»СЊС‚РµС‚Р° СЌРЅРµСЂРіРµС‚РёРєРё Рё Р°РІС‚РѕРјР°С‚РёРєРё. РЎРѕ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё 'Р”РІРёРіР°С‚РµР»Рё РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ СЃРіРѕСЂР°РЅРёСЏ'. РљР°С‚Р°Р»РѕРі С„Р°Р№Р»РѕРІ С‚Р°Рј С‚РѕР¶Рµ РѕР±С€РёСЂРЅС‹Р№, Р·Р°РіР»СЏРЅРёС‚Рµ С‚СѓРґР° С‚РѕР¶Рµ.">РЎР°Р№С‚ РґРёР·РµР»РёСЃС‚РѕРІ</a></li>
+  <li><a href="http://smtueco.ru/index.shtml" target="_blank">РЎР°Р№С‚ СЌРєРѕР»РѕРіРѕРІ</a></li>
+  <li><a href="http://www.twirpx.com" target="_blank">РћР±С‰РёСЂРЅР°СЏ СЃС‚СѓРґРµРЅС‡РµСЃРєР°СЏ Р±РёР±Р»РёРѕС‚РµРєР°</a></li>
+  <li><a href="http://www.iti.spb.ru/rus/index.shtml" target="_blank">РРЅСЃС‚РёС‚СѓС‚ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹С… С‚РµС…РЅРѕР»РѕРіРёР№ РЎРџР±Р“РњРўРЈ</a></li>
  </ul>
  </div>
 </div>
 <!-- /Friends -->
 
-<!-- Рекламные минибаннеры -->
+<!-- Р РµРєР»Р°РјРЅС‹Рµ РјРёРЅРёР±Р°РЅРЅРµСЂС‹ -->
 <div class="minibanner">
   <!-- Intuit -->
-  <a title="Интернет-Университет" href="http://www.intuit.ru">
+  <a title="РРЅС‚РµСЂРЅРµС‚-РЈРЅРёРІРµСЂСЃРёС‚РµС‚" href="http://www.intuit.ru">
     <img alt="Intuit" border="0" src="http://www.intuit.ru/partner/88x31_6.gif">
   </a>
   <!-- /Intuit -->
   <!-- Hut -->
   <a href="http://www.hut.ru">
-    <img src="http://www.hut.ru/imgs/ban/hutm1.gif" alt="Лучший бесплатный хостинг">
+    <img src="http://www.hut.ru/imgs/ban/hutm1.gif" alt="Р›СѓС‡С€РёР№ Р±РµСЃРїР»Р°С‚РЅС‹Р№ С…РѕСЃС‚РёРЅРі">
   </a>
   <!-- /Hut -->
 </div>
-<!-- /Рекламные минибаннеры -->
+<!-- /Р РµРєР»Р°РјРЅС‹Рµ РјРёРЅРёР±Р°РЅРЅРµСЂС‹ -->
 </td>

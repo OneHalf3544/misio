@@ -1,4 +1,4 @@
-<? $Title = "Заголовок"; ?>
+<? $Title = "Р—Р°РіРѕР»РѕРІРѕРє"; ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 <!-- Body --> 
 <h1><? echo $Title; ?></h1>

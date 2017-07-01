@@ -1,20 +1,20 @@
-<? $Title = "Файлы" ?>
+<? $Title = "Р¤Р°Р№Р»С‹" ?>
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 
 <!-- Body --> 
-<h1>Файлы</h1>
+<h1>Р¤Р°Р№Р»С‹</h1>
 <? include($_SERVER["DOCUMENT_ROOT"]."/files/filesfilter.php"); ?>
 <?
   $PageSelector = '';
   $NFiles = 10; 
   if(!isset($_GET['FirstNFile'])) {
-    $FirstNFile = 0; //Число новостей на странице и номер первой новости
+    $FirstNFile = 0; //Р§РёСЃР»Рѕ РЅРѕРІРѕСЃС‚РµР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ Рё РЅРѕРјРµСЂ РїРµСЂРІРѕР№ РЅРѕРІРѕСЃС‚Рё
   }
   else {
     $FirstNFile = $_GET['FirstNFile'];
   }
 
-if(!isset($_REQUEST['Facult'])) { // Если параметры в URL отсутствуют
+if(!isset($_REQUEST['Facult'])) { // Р•СЃР»Рё РїР°СЂР°РјРµС‚СЂС‹ РІ URL РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚
     $_REQUEST['Facult'] = $_COOKIE['FacultId'];
     $_REQUEST['Speciality'] = $_COOKIE['SpecId'];
     $_REQUEST['Subject'] = '';
@@ -27,7 +27,7 @@ if(!isset($_REQUEST['Facult'])) { // Если параметры в URL отсутствуют
         $_REQUEST['Semestr'] = 0;
 }
 
-/* Если выбран предмет */
+/* Р•СЃР»Рё РІС‹Р±СЂР°РЅ РїСЂРµРґРјРµС‚ */
 if ($_REQUEST['Subject'] != "") {
   $Where = " WHERE `Files`.`SubjectId` = ".$_REQUEST['Subject'];
 }
@@ -53,8 +53,8 @@ elseif (isset($_REQUEST['Semestr']) && $_REQUEST['Semestr'] != 0) {
 
 if(isset($_REQUEST['MaterialType']) && 
     $_REQUEST['MaterialType'] != "0" &&
-    $_REQUEST['MaterialType'] != "") { // Если указан тип материала
-  if(isset($Where)) { //Если переменная $Where уже назначена
+    $_REQUEST['MaterialType'] != "") { // Р•СЃР»Рё СѓРєР°Р·Р°РЅ С‚РёРї РјР°С‚РµСЂРёР°Р»Р°
+  if(isset($Where)) { //Р•СЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ $Where СѓР¶Рµ РЅР°Р·РЅР°С‡РµРЅР°
     $Where .= ' AND ';
   }
   else {
@@ -64,8 +64,8 @@ if(isset($_REQUEST['MaterialType']) &&
 }
 
 if(isset($_REQUEST['PrepodId']) && 
-    $_REQUEST['PrepodId'] != "0") { // Если указан препод
-  if(isset($Where)) { //Если переменная $Where уже назначена
+    $_REQUEST['PrepodId'] != "0") { // Р•СЃР»Рё СѓРєР°Р·Р°РЅ РїСЂРµРїРѕРґ
+  if(isset($Where)) { //Р•СЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ $Where СѓР¶Рµ РЅР°Р·РЅР°С‡РµРЅР°
     $Where .= ' AND ';
   }
   else {
@@ -74,8 +74,8 @@ if(isset($_REQUEST['PrepodId']) &&
   $Where .= '`Files`.`PrepodId` = '.intval($_REQUEST['PrepodId']);
 }
 
-if(@$_REQUEST['ShowUnmarkedFiles'] == 'yes') { // Если указан препод
-  if(isset($Where)) { //Если переменная $Where уже назначена
+if(@$_REQUEST['ShowUnmarkedFiles'] == 'yes') { // Р•СЃР»Рё СѓРєР°Р·Р°РЅ РїСЂРµРїРѕРґ
+  if(isset($Where)) { //Р•СЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ $Where СѓР¶Рµ РЅР°Р·РЅР°С‡РµРЅР°
     $Where .= ' OR ';
   }
   else {
@@ -127,7 +127,7 @@ $Res = mysql_query(
     'SELECT COUNT(DISTINCT `Files`.`id`) FROM `Files`
     LEFT JOIN `Subjects` ON `Files`.`SubjectId` = `Subjects`.`id` '.$Where
 );
-$CountOfFiles = mysql_result($Res, 0); //Количество новостей в базе
+$CountOfFiles = mysql_result($Res, 0); //РљРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІРѕСЃС‚РµР№ РІ Р±Р°Р·Рµ
 
 for($i = 1; $CountOfFiles > $NFiles && $i <= ceil($CountOfFiles / $NFiles); $i++) {
   if ($_REQUEST['FirstNFile'] == ($i-1)*$NFiles)

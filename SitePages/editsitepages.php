@@ -1,10 +1,10 @@
-<? $Title = "Редактор страниц сайта";
+<? $Title = "Р РµРґР°РєС‚РѕСЂ СЃС‚СЂР°РЅРёС† СЃР°Р№С‚Р°";
 include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
 <!-- Body -->
 <script type="text/javascript">
     $(document).ready(function() {
         $('input[name=DeletePage]').click(function(){
-            if(confirm('Вы уверены, что хотите удалить страницу?'))
+            if(confirm('Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ?'))
                 $.get('/test2.php', {id:"<? echo $_REQUEST['id']; ?>",
                     act:"DeletePage"}, function(data){
                         alert(removeAdvertisement(data));
@@ -14,7 +14,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
     });
 </script>
 <? if(isset($_REQUEST['SavingPage'])):
-    if($_REQUEST['id'] == 0) {// Создание странички
+    if($_REQUEST['id'] == 0) {// РЎРѕР·РґР°РЅРёРµ СЃС‚СЂР°РЅРёС‡РєРё
         mysql_query(
             'INSERT INTO `Pages` (`Title`, `Content`, `Description`)
             VALUES ("'.$_REQUEST['PageTitle'].'",
@@ -22,7 +22,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
         );
         $_REQUEST['id'] = mysql_insert_id();
     }
-    else // Редактирование страницы
+    else // Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЃС‚СЂР°РЅРёС†С‹
         mysql_query(
             'UPDATE `Pages` SET `Title`="'.$_REQUEST['PageTitle'].'",
             `Content` = "'.$_REQUEST['PageContent'].'",
@@ -38,31 +38,31 @@ endif; ?>
         $S = mysql_fetch_assoc($Res);
     } ?>
     <div class="textOfPage">
-        <p>Хоть сайт и позволяет редактировать странички в полях ниже, более
-        правильным будет редактировать текст во внешнем редакторе, что
-        обеспечит меньшую вероятнось ошибок в тексте разметки.</p>
+        <p>РҐРѕС‚СЊ СЃР°Р№С‚ Рё РїРѕР·РІРѕР»СЏРµС‚ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃС‚СЂР°РЅРёС‡РєРё РІ РїРѕР»СЏС… РЅРёР¶Рµ, Р±РѕР»РµРµ
+        РїСЂР°РІРёР»СЊРЅС‹Рј Р±СѓРґРµС‚ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ С‚РµРєСЃС‚ РІРѕ РІРЅРµС€РЅРµРј СЂРµРґР°РєС‚РѕСЂРµ, С‡С‚Рѕ
+        РѕР±РµСЃРїРµС‡РёС‚ РјРµРЅСЊС€СѓСЋ РІРµСЂРѕСЏС‚РЅРѕСЃСЊ РѕС€РёР±РѕРє РІ С‚РµРєСЃС‚Рµ СЂР°Р·РјРµС‚РєРё.</p>
     </div>
-    <a href="/Pages.php?id=<? echo $_REQUEST['id']; ?>">Просмотреть страницу</a>
+    <a href="/Pages.php?id=<? echo $_REQUEST['id']; ?>">РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ</a>
     <form action="<? echo $_SERVER['PHP_SELF']; ?>" method="post">
         <? if($_REQUEST['id'] != 0): ?>
-            <input type="button" name="DeletePage" value="Удалить страницу">
+            <input type="button" name="DeletePage" value="РЈРґР°Р»РёС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ">
         <? endif; ?>
         <input type="hidden" name="SavingPage" value="yes" />
         <input type="hidden" name="id" value="<? echo $_REQUEST['id']; ?>" />
-        <h2>Заголовок</h2>
+        <h2>Р—Р°РіРѕР»РѕРІРѕРє</h2>
         <input class="longinput" value="<? echo $S['Title']; ?>" type="text" name="PageTitle">
-        <h2>Описание</h2>
+        <h2>РћРїРёСЃР°РЅРёРµ</h2>
         <textarea name="PageDescription"><? echo $S['Description'] ?></textarea>
-        <h2>Содержимое</h2>
+        <h2>РЎРѕРґРµСЂР¶РёРјРѕРµ</h2>
         <textarea name="PageContent" class="editPage"><? echo str_replace('&quot', "\"", $S['Content']); ?></textarea>
-        <input type="submit" value="Сохранить"/>
+        <input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/>
     </form>
   <? else: ?>
       <div class="textOfPage">
-          Здесь вы можете отредактировать страницы сайта. Либо 
-          <a href="/SitePages/editsitepages.php?id=0">создать новую</a>
-          страничку, либо отредактировать уже существующую, список которых
-          предоставлен ниже:
+          Р—РґРµСЃСЊ РІС‹ РјРѕР¶РµС‚Рµ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃС‚СЂР°РЅРёС†С‹ СЃР°Р№С‚Р°. Р›РёР±Рѕ 
+          <a href="/SitePages/editsitepages.php?id=0">СЃРѕР·РґР°С‚СЊ РЅРѕРІСѓСЋ</a>
+          СЃС‚СЂР°РЅРёС‡РєСѓ, Р»РёР±Рѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰СѓСЋ, СЃРїРёСЃРѕРє РєРѕС‚РѕСЂС‹С…
+          РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅ РЅРёР¶Рµ:
       </div>
     <ul>
     <? $Res = mysql_query('SELECT `id`, `Title` FROM `Pages`');

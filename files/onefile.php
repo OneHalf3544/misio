@@ -2,74 +2,74 @@
   $FilesArray['Message'] = str_replace("&quot", "\"", $FilesArray['Message']);
   $ProfileLink = '<a href="/Users/profile.php?LogName='.$FilesArray['NickName'].'">'.$FilesArray['NickName'].'</a>';
   
-  // Далее следует кусок html-кода
+  // Р”Р°Р»РµРµ СЃР»РµРґСѓРµС‚ РєСѓСЃРѕРє html-РєРѕРґР°
 ?>
     <div class="matBlock">
       <h2 class="title">
         <? 
-        if($_SERVER['PHP_SELF'] != '/oneofmaterial.php') { // Добавлять ли ссылку на страничку с комментариями?
+        if($_SERVER['PHP_SELF'] != '/oneofmaterial.php') { // Р”РѕР±Р°РІР»СЏС‚СЊ Р»Рё СЃСЃС‹Р»РєСѓ РЅР° СЃС‚СЂР°РЅРёС‡РєСѓ СЃ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё?
           echo '<a href="/oneofmaterial.php?TypeOfMat=Files&NMaterial='.$FilesArray['id'].'">'.
           $FilesArray['Title'].'</a>';
         } 
         else {
           echo $FilesArray['Title'];
         } ?>
-        <a class="editlink" href="/files/addfile.php?id=<? echo $FilesArray['id']; ?>">[Редактировать]</a>
+        <a class="editlink" href="/files/addfile.php?id=<? echo $FilesArray['id']; ?>">[Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ]</a>
       </h2>
       <div class="content">
-        <a class="loadLink" href="http://misio.ucoz.ru/load/0-0-0-<? echo $FilesArray['id'] ?>-20">[Скачать с misio.ucoz.ru]</a>
-        <a class="loadLink" href="/materials/<? echo $FilesArray['URL'] ?>">[Скачать с сервера]</a>
+        <a class="loadLink" href="http://misio.ucoz.ru/load/0-0-0-<? echo $FilesArray['id'] ?>-20">[РЎРєР°С‡Р°С‚СЊ СЃ misio.ucoz.ru]</a>
+        <a class="loadLink" href="/materials/<? echo $FilesArray['URL'] ?>">[РЎРєР°С‡Р°С‚СЊ СЃ СЃРµСЂРІРµСЂР°]</a>
         
         <div class="Message"><? echo add_p_Tag($FilesArray['Message']); ?></div>
         <div class="Details">
-          Материал из категории 
+          РњР°С‚РµСЂРёР°Р» РёР· РєР°С‚РµРіРѕСЂРёРё 
             <? 
             $Tmp = array();
-            foreach(explode(',', $FilesArray['Type']) as $a) // наполняем массив с категориями
+            foreach(explode(',', $FilesArray['Type']) as $a) // РЅР°РїРѕР»РЅСЏРµРј РјР°СЃСЃРёРІ СЃ РєР°С‚РµРіРѕСЂРёСЏРјРё
                 $Tmp[] = '"<a href="'.filterFilesUrlLink(
-                    $_REQUEST['Facult'], // Факультет
-                    $_REQUEST['Speciality'], // Специальность
-                    $_REQUEST['Semestr'], // Семестр
-                    $_REQUEST['Subject'], // Предмет
-                    $_REQUEST['PrepodId'],  // Препод
-                    $a, // Категория
-                    $_REQUEST['Sorting'], // Сортировка
-                    $_REQUEST['ShowUnmarkedFiles'] // Показывать файлы с неотмеченными предметами
+                    $_REQUEST['Facult'], // Р¤Р°РєСѓР»СЊС‚РµС‚
+                    $_REQUEST['Speciality'], // РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ
+                    $_REQUEST['Semestr'], // РЎРµРјРµСЃС‚СЂ
+                    $_REQUEST['Subject'], // РџСЂРµРґРјРµС‚
+                    $_REQUEST['PrepodId'],  // РџСЂРµРїРѕРґ
+                    $a, // РљР°С‚РµРіРѕСЂРёСЏ
+                    $_REQUEST['Sorting'], // РЎРѕСЂС‚РёСЂРѕРІРєР°
+                    $_REQUEST['ShowUnmarkedFiles'] // РџРѕРєР°Р·С‹РІР°С‚СЊ С„Р°Р№Р»С‹ СЃ РЅРµРѕС‚РјРµС‡РµРЅРЅС‹РјРё РїСЂРµРґРјРµС‚Р°РјРё
                 ).'">'.$FilesType[$a].'"</a>';
             echo implode(', ', $Tmp);
             ?>
 
-            по предмету <a href="<? echo filterFilesUrlLink(
-                    $_REQUEST['Facult'], // Факультет
-                    $_REQUEST['Speciality'], // Специальность
-                    $_REQUEST['Semestr'], // Семестр
-                $FilesArray['SubjectId'], // Предмет
-                    $_REQUEST['PrepodId'],  // Препод
-                    $_REQUEST['MaterialType'], // Категория
-                    $_REQUEST['Sorting'], // Сортировка
-                    $_REQUEST['ShowUnmarkedFiles'] // Показывать файлы с неотмеченными предметами
-                ) ?>" title="Показать файлы по данному предмету">"<? echo $FilesArray['SubjTitle']; ?>"</a>
-          <br />Преподаватель: <? 
+            РїРѕ РїСЂРµРґРјРµС‚Сѓ <a href="<? echo filterFilesUrlLink(
+                    $_REQUEST['Facult'], // Р¤Р°РєСѓР»СЊС‚РµС‚
+                    $_REQUEST['Speciality'], // РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ
+                    $_REQUEST['Semestr'], // РЎРµРјРµСЃС‚СЂ
+                $FilesArray['SubjectId'], // РџСЂРµРґРјРµС‚
+                    $_REQUEST['PrepodId'],  // РџСЂРµРїРѕРґ
+                    $_REQUEST['MaterialType'], // РљР°С‚РµРіРѕСЂРёСЏ
+                    $_REQUEST['Sorting'], // РЎРѕСЂС‚РёСЂРѕРІРєР°
+                    $_REQUEST['ShowUnmarkedFiles'] // РџРѕРєР°Р·С‹РІР°С‚СЊ С„Р°Р№Р»С‹ СЃ РЅРµРѕС‚РјРµС‡РµРЅРЅС‹РјРё РїСЂРµРґРјРµС‚Р°РјРё
+                ) ?>" title="РџРѕРєР°Р·Р°С‚СЊ С„Р°Р№Р»С‹ РїРѕ РґР°РЅРЅРѕРјСѓ РїСЂРµРґРјРµС‚Сѓ">"<? echo $FilesArray['SubjTitle']; ?>"</a>
+          <br />РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ: <? 
             if ($FilesArray['PrepodId'] != 0)
               // echo '<a href="/oneofmaterial.php?TypeOfMat=Prepods&NMaterial='.$FilesArray['PrepodId'].'">';
               // echo $FilesArray['PrepodName'].'</a>';
               echo '<a href="'.filterFilesUrlLink(
-                    $_REQUEST['Facult'], // Факультет
-                    $_REQUEST['Speciality'], // Специальность
-                    $_REQUEST['Semestr'], // Семестр
-                    $_REQUEST['Subject'], // Предмет
-                $FilesArray['PrepodId'],  // Препод
-                    $_REQUEST['MaterialType'], // Категория
-                    $_REQUEST['Sorting'], // Сортировка
-                    $_REQUEST['ShowUnmarkedFiles'] // Показывать файлы с неотмеченными предметами
+                    $_REQUEST['Facult'], // Р¤Р°РєСѓР»СЊС‚РµС‚
+                    $_REQUEST['Speciality'], // РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ
+                    $_REQUEST['Semestr'], // РЎРµРјРµСЃС‚СЂ
+                    $_REQUEST['Subject'], // РџСЂРµРґРјРµС‚
+                $FilesArray['PrepodId'],  // РџСЂРµРїРѕРґ
+                    $_REQUEST['MaterialType'], // РљР°С‚РµРіРѕСЂРёСЏ
+                    $_REQUEST['Sorting'], // РЎРѕСЂС‚РёСЂРѕРІРєР°
+                    $_REQUEST['ShowUnmarkedFiles'] // РџРѕРєР°Р·С‹РІР°С‚СЊ С„Р°Р№Р»С‹ СЃ РЅРµРѕС‚РјРµС‡РµРЅРЅС‹РјРё РїСЂРµРґРјРµС‚Р°РјРё
                 ).'">'.$FilesArray['PrepodName'].'"</a>';
           ?>
         </div>
         <div class="Details">
-          Просмотров: <? echo $FilesArray['Views']; ?>
-          | Добавил: <? echo $ProfileLink; ?> 
-          | Дата: <? echo date("d-m-Y",$FilesArray['DateOfAdding']); ?>
-          | Комментариев: <? echo $FilesArray['CommCount']; ?>
+          РџСЂРѕСЃРјРѕС‚СЂРѕРІ: <? echo $FilesArray['Views']; ?>
+          | Р”РѕР±Р°РІРёР»: <? echo $ProfileLink; ?> 
+          | Р”Р°С‚Р°: <? echo date("d-m-Y",$FilesArray['DateOfAdding']); ?>
+          | РљРѕРјРјРµРЅС‚Р°СЂРёРµРІ: <? echo $FilesArray['CommCount']; ?>
         </div>
       </div>
     </div>

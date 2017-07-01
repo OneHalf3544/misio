@@ -1,8 +1,8 @@
 <?php 
 if(isset($_REQUEST['id']))
-  $Title = 'Редактировать новость';
+  $Title = 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РЅРѕРІРѕСЃС‚СЊ';
 else
-  $Title = "Добавить новость";
+  $Title = "Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІРѕСЃС‚СЊ";
 
 include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 <!-- Body --> 
@@ -19,7 +19,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
           "'.htmlspecialchars($_COOKIE['login']).'",
           "'.time().'")'
       );
-      echoRedirectHtml ('/oneofmaterial.php?TypeOfMat=News&NMaterial='.mysql_insert_id(), 'Новость создана');
+      echoRedirectHtml ('/oneofmaterial.php?TypeOfMat=News&NMaterial='.mysql_insert_id(), 'РќРѕРІРѕСЃС‚СЊ СЃРѕР·РґР°РЅР°');
     } 
     else {
       mysql_query(
@@ -30,7 +30,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
           `DateOfAdding` = "'.time().'"
           WHERE `id` = '.intval($_REQUEST['id'])
       );
-      echoRedirectHtml ('/oneofmaterial.php?TypeOfMat=News&NMaterial='.$_REQUEST['id'], 'Новость изменена');
+      echoRedirectHtml ('/oneofmaterial.php?TypeOfMat=News&NMaterial='.$_REQUEST['id'], 'РќРѕРІРѕСЃС‚СЊ РёР·РјРµРЅРµРЅР°');
     }
   }
   if (isset($_REQUEST['id'])) {
@@ -44,11 +44,11 @@ include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
     <input name="id" type="hidden" value="<? echo $NewsArray['id'] ?>">
   <? endif; ?>
   <input name="SaveNewContent" type="hidden" value="true">
-  Заголовок
+  Р—Р°РіРѕР»РѕРІРѕРє
   <input type="text" name="title" class="longinput" value="<? echo $NewsArray['Title'] ?>">
-  Описание
+  РћРїРёСЃР°РЅРёРµ
   <textarea name="Message" class="high"><? echo $NewsArray['Message']; ?></textarea>
-  <input type="submit" value="Сохранить">
+  <input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 </form>
 
 <!-- /Body -->

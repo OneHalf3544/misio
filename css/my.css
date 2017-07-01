@@ -1,4 +1,4 @@
-  /* Общие стили */
+  /* РћР±С‰РёРµ СЃС‚РёР»Рё */
 body {
     background-color: #A5A5ff;
     color: #385183;
@@ -27,7 +27,7 @@ optgroup {
     font-size: 9pt;
 }
 
-/* Заголовки и содержимое (общие свойства) */
+/* Р—Р°РіРѕР»РѕРІРєРё Рё СЃРѕРґРµСЂР¶РёРјРѕРµ (РѕР±С‰РёРµ СЃРІРѕР№СЃС‚РІР°) */
 .title {
     font-weight:bold;
     color:black;
@@ -67,7 +67,7 @@ optgroup {
     width:100%;
 }
 
-    /* Элементы формы */
+    /* Р­Р»РµРјРµРЅС‚С‹ С„РѕСЂРјС‹ */
 form {
     padding: 5px;
 }
@@ -95,7 +95,7 @@ input,textarea,select {
     vertical-align: middle;
 }
 
-  /* Стили ссылок */
+  /* РЎС‚РёР»Рё СЃСЃС‹Р»РѕРє */
 a:link    {text-decoration:underline; color:#22229C;}
 a:active  {text-decoration:underline; color:#22229C;}
 a:visited {text-decoration:underline; color:#22229C;}
@@ -155,14 +155,14 @@ a:hover   {text-decoration:underline; color:#FF4400;}
 .optionsArrayTable td {border-bottom:1px solid blue;padding:5px;}
 .optionsArrayTable td:first-child {width:150px;}
 
-  /* Миничат */
+  /* РњРёРЅРёС‡Р°С‚ */
 .mchatpost {border: 1px solid blue;margin:2px 0px;}
 .mchatpost .title2 {
     border-bottom:1px dashed #A0A0A0;
     padding-bottom:2px;
 }
 .mchatpost .content {border:none;}
-  /* Расписание */
+  /* Р Р°СЃРїРёСЃР°РЅРёРµ */
 .schedule {min-height: inherit;}
 .schedule .title {font-size:10pt; font-weight:bold;}
 .schedule .content {min-height:inherit;}
@@ -201,7 +201,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
     vertical-align:top;
 }
 
-  /* Минибаннеры */
+  /* РњРёРЅРёР±Р°РЅРЅРµСЂС‹ */
 .minibanner {
     text-align:center;
 }
@@ -223,7 +223,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
     margin: 10px;
 }
 
-  /* Стили текста */
+  /* РЎС‚РёР»Рё С‚РµРєСЃС‚Р° */
 .textTable {border-collapse: collapse;}
 .textTable th {text-align:center;}
 .textTable td {padding:10px;border:1px solid #222266;vertical-align:top;text-align:justify;}
@@ -237,7 +237,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
     margin: 10px;
 }
 
-  /* Параметры главной форматирующей таблицы */
+  /* РџР°СЂР°РјРµС‚СЂС‹ РіР»Р°РІРЅРѕР№ С„РѕСЂРјР°С‚РёСЂСѓСЋС‰РµР№ С‚Р°Р±Р»РёС†С‹ */
 .mainTable {
     width: 95%;
     padding: 0px 0px;
@@ -264,7 +264,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
 .pageSelector {width:80%;text-align:center;padding:5px 0px;margin:5px auto;}
 .currentPage {color:black; font-weight:bold;}
 
-  /* Опросы */
+  /* РћРїСЂРѕСЃС‹ */
 .voteNumber {
     color:gray;
     font-size:smaller;
@@ -275,7 +275,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
     padding-left:0px;
 }
 
-  /* Стиль списка преподов */
+  /* РЎС‚РёР»СЊ СЃРїРёСЃРєР° РїСЂРµРїРѕРґРѕРІ */
 .prepods {}
 .prepods .title {font-weight:bold;font-size:12pt;}
 .prepods .content {
@@ -287,10 +287,10 @@ a:hover   {text-decoration:underline; color:#FF4400;}
 .prepods img {float:right;margin:15px;margin-top:0px;}
 .prepods ul {list-style-position: inside;margin-left:5px;padding-left:5px;}
 
-/* Кафедры */
+/* РљР°С„РµРґСЂС‹ */
 .depts {margin-bottom:10px;}
 
-  /* Стиль списка предметов */
+  /* РЎС‚РёР»СЊ СЃРїРёСЃРєР° РїСЂРµРґРјРµС‚РѕРІ */
 .subject {margin-bottom:10px; }
 .delSubject, .applySubject {float:right;}
 .subject .title {}
@@ -301,7 +301,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
 }
 .subject .content p {text-indent:2ex;}
 
-  /* Коммертарии */
+  /* РљРѕРјРјРµСЂС‚Р°СЂРёРё */
 .commentsTitle {
     font-size: 10pt;
 }
@@ -312,7 +312,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
 .comments .title {}
 .comments .content {min-height:50px;}
 
-  /* Горизонтальное меню */
+  /* Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРµ РјРµРЅСЋ */
 .hMenuDiv {
     background-image:url('/img/Menu/ForHorMenu.png');
     background-repeat:repeat-x;
@@ -351,7 +351,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
     background-image:url('/img/Menu/Right.png');
     background-repeat: no-repeat;
 }
-  /* Вид ссылок горизонтального меню */
+  /* Р’РёРґ СЃСЃС‹Р»РѕРє РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРіРѕ РјРµРЅСЋ */
 .hMenuTd a:link {text-decoration:none; color:#FFFFFF;}
 .hMenuTd a:active {text-decoration:none; color:#FFFFFF;}
 .hMenuTd a:visited {text-decoration:none; color:#FFFFFF;}
@@ -360,7 +360,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
     color:#DF4400;
 }
 
-  /* Вертикальные блоки */
+  /* Р’РµСЂС‚РёРєР°Р»СЊРЅС‹Рµ Р±Р»РѕРєРё */
 .vBlock {
     width:200px;
     background-color:#F5F5FF;
@@ -373,7 +373,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
 .vBlock li:hover {background-color:#D5D5EF;}
 .vBlock li a {text-decoration:none;}
 
-  /* Блоки материалов */
+  /* Р‘Р»РѕРєРё РјР°С‚РµСЂРёР°Р»РѕРІ */
 .matBlock {
     margin-bottom:10px;
     width:100%;
@@ -393,7 +393,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
     margin-bottom: 5px;
     background-color: #F7F7FA
 }
-  /* Вид ссылок в заголовках */
+  /* Р’РёРґ СЃСЃС‹Р»РѕРє РІ Р·Р°РіРѕР»РѕРІРєР°С… */
 .matBlock .title a:link     {text-decoration:none; color:black;}
 .matBlock .title a:active   {text-decoration:none; color:black;}
 .matBlock .title a:visited  {text-decoration:none; color:black;}
@@ -413,7 +413,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
     text-decoration:underline; color:#525262;
 }
 
-/* Таблицы данных */
+/* РўР°Р±Р»РёС†С‹ РґР°РЅРЅС‹С… */
 .dataTable {
     margin:0 auto;
     width:600px;
@@ -429,7 +429,7 @@ a:hover   {text-decoration:underline; color:#FF4400;}
     height:60px
 }
 
-/* Календарь */
+/* РљР°Р»РµРЅРґР°СЂСЊ */
 .calendar {
     text-align:center;
     margin:0px auto;

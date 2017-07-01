@@ -1,14 +1,14 @@
-<?php //Этот модуль отображает материал с комментариями
-$Title = "Комментарии к материалу";
+<?php //Р­С‚РѕС‚ РјРѕРґСѓР»СЊ РѕС‚РѕР±СЂР°Р¶Р°РµС‚ РјР°С‚РµСЂРёР°Р» СЃ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё
+$Title = "РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РјР°С‚РµСЂРёР°Р»Сѓ";
 include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php");
 
 $TypeOfMat = $_REQUEST['TypeOfMat']; $NMaterial = intval($_REQUEST['NMaterial']);
-//Увеличиваем счетчик просмотров
+//РЈРІРµР»РёС‡РёРІР°РµРј СЃС‡РµС‚С‡РёРє РїСЂРѕСЃРјРѕС‚СЂРѕРІ
 mysql_query("UPDATE `$TypeOfMat` SET `$TypeOfMat`.`Views` = `$TypeOfMat`.`Views` + 1 WHERE `id` = $NMaterial"); 
 
 
 if ($TypeOfMat == 'Prepods') { ?>
-  <h1>Информация о преподавателе</h1>
+  <h1>РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРµРїРѕРґР°РІР°С‚РµР»Рµ</h1>
   <? $Res = mysql_query("SELECT * FROM `$TypeOfMat` WHERE `id` = $NMaterial");
   $Prepods = mysql_fetch_assoc($Res);
   include ($_SERVER["DOCUMENT_ROOT"]."/prepods/oneprepod.php");
@@ -30,7 +30,7 @@ else {
   $MatArray['Message'] = str_replace("&quot", "\"", $MatArray['Message']);
   $dateofadding = date("d-m-Y",$MatArray['DateOfAdding']);
 
-  // Далее следует кусок html-кода
+  // Р”Р°Р»РµРµ СЃР»РµРґСѓРµС‚ РєСѓСЃРѕРє html-РєРѕРґР°
 ?>
     <table class="matBlock">
       <tr>
@@ -40,16 +40,16 @@ else {
         <td class="content">
           <div class="Message"><? echo add_p_Tag($MatArray['Message']); ?></div>
           <div class="Details">
-            Просмотров: <? echo $MatArray['Views']; ?>
-            | Добавил: <? echo profileURL($MatArray['Author']); ?>
-            | Дата: <? echo $dateofadding; ?>
+            РџСЂРѕСЃРјРѕС‚СЂРѕРІ: <? echo $MatArray['Views']; ?>
+            | Р”РѕР±Р°РІРёР»: <? echo profileURL($MatArray['Author']); ?>
+            | Р”Р°С‚Р°: <? echo $dateofadding; ?>
           </div>
         </td>
       </tr>
     </table>
 <?
 }
-include("comments.php"); // Комментарии к материалу
-include("addcomment.php"); // Форма добавления комментария
+include("comments.php"); // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РјР°С‚РµСЂРёР°Р»Сѓ
+include("addcomment.php"); // Р¤РѕСЂРјР° РґРѕР±Р°РІР»РµРЅРёСЏ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 include($_SERVER["DOCUMENT_ROOT"]."/Design/afterbody.php");
 ?>

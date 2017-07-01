@@ -1,9 +1,9 @@
 <?php
-/* Регистрация пользователя, либо редактирование профиля в зависимости от того, 
-  зашел ли пользователь под своим логином, или числится как гость */
+/* Р РµРіРёСЃС‚СЂР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, Р»РёР±Рѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕС„РёР»СЏ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РѕРіРѕ, 
+  Р·Р°С€РµР» Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїРѕРґ СЃРІРѕРёРј Р»РѕРіРёРЅРѕРј, РёР»Рё С‡РёСЃР»РёС‚СЃСЏ РєР°Рє РіРѕСЃС‚СЊ */
 
 if(isset($_COOKIE['login']) || $_REQUEST['LogName']) {
-    $Title = 'Редактирование профиля';
+    $Title = 'Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕС„РёР»СЏ';
     if (isset($_REQUEST['LogName'])) {
         $Login = $_REQUEST['LogName'];
     }
@@ -12,18 +12,18 @@ if(isset($_COOKIE['login']) || $_REQUEST['LogName']) {
     }
 }
 else {
-    $Title = 'Регистрация пользователя';
+    $Title = 'Р РµРіРёСЃС‚СЂР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
 }
   
   include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php");
   
   if (isset($_REQUEST['SaveProfile'])):
     if ($_REQUEST['Passwd'] != $_REQUEST['PasswdConfirm']) {
-      ?> Введенные пароли не совпадают <? }
+      ?> Р’РІРµРґРµРЅРЅС‹Рµ РїР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚ <? }
       
     $Res = mysql_query('SELECT COUNT(*) FROM `Users` WHERE `NickName` = "'.$_REQUEST['NickName'].'"');
     if (mysql_result($Res, 0) != 0) :
-      // Обновляем данные если такой пользователь есть в базе
+      // РћР±РЅРѕРІР»СЏРµРј РґР°РЅРЅС‹Рµ РµСЃР»Рё С‚Р°РєРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РµСЃС‚СЊ РІ Р±Р°Р·Рµ
       mysql_query(
         'UPDATE `Users` SET 
         `SurName`       = "'.$_REQUEST['SurName'].'", 
@@ -41,9 +41,9 @@ else {
         WHERE `NickName` = "'.$_REQUEST['NickName'].'"'
       );
     else :
-      // Создаем запись в базе если такого юзера еще нет
+      // РЎРѕР·РґР°РµРј Р·Р°РїРёСЃСЊ РІ Р±Р°Р·Рµ РµСЃР»Рё С‚Р°РєРѕРіРѕ СЋР·РµСЂР° РµС‰Рµ РЅРµС‚
         $password = $_POST['Passwd'];
-        $salt = '$1$gRUR'; // TODO Заменить на генератор символов
+        $salt = '$1$gRUR'; // TODO Р—Р°РјРµРЅРёС‚СЊ РЅР° РіРµРЅРµСЂР°С‚РѕСЂ СЃРёРјРІРѕР»РѕРІ
         $md5hash = crypt($password,$salt);
       mysql_query(
         'INSERT INTO `Users` (`NickName`, `Passwd`, `SurName`, `FirstName`, `EMail`, 
@@ -74,7 +74,7 @@ else {
         'SELECT `Users`.*, `Speciality`.`FacultId` FROM `Users`
         LEFT JOIN `Speciality` ON `Users`.`SpecId` = `Speciality`.`id`
         WHERE `NickName` = "'.$Login.'"'
-    ); // Получаем данные о пользователе
+    ); // РџРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
     $UserArray = mysql_fetch_assoc($Res);
     $BirthDayArray = explode("-", $UserArray['BirthDay']);
   }
@@ -83,7 +83,7 @@ else {
 <h1><? echo $Title ?></h1>
 <script type="text/javascript" src="/jscript/selectcascade.js"></script>
 <? if(isset($_REQUEST['SaveProfile']) && $_REQUEST['NickName'] == $_COOKIE['login']):
-    // Поменяем куки, если юзер редактировал свой профиль ?>
+    // РџРѕРјРµРЅСЏРµРј РєСѓРєРё, РµСЃР»Рё СЋР·РµСЂ СЂРµРґР°РєС‚РёСЂРѕРІР°Р» СЃРІРѕР№ РїСЂРѕС„РёР»СЊ ?>
     <script type="text/javascript">
 //        setCookie('FacultId', '', 0);
 //        setCookie('SpecId', '', 0);
@@ -98,7 +98,7 @@ else {
 <table class="optionsArrayTable">
 <tbody>
   <tr>
-    <td>Логин: </td>
+    <td>Р›РѕРіРёРЅ: </td>
     <td>
     <? if (isset($Login)): ?>
       <? echo $Login ?><input type="hidden" name="NickName" value="<? echo $Login ?>">
@@ -108,47 +108,47 @@ else {
     </td>
   </tr>
   <tr>
-    <td>Пароль: </td>
+    <td>РџР°СЂРѕР»СЊ: </td>
     <td><input class="longinput" type="password" name="Passwd"></td>
   </tr>
   <tr>
-    <td>Пароль (подтверждение): </td>
+    <td>РџР°СЂРѕР»СЊ (РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ): </td>
     <td><input class="longinput" type="password" name="PasswdConfirm"></td>
   </tr>
   <tr>
-    <td>Фамилия: </td>
+    <td>Р¤Р°РјРёР»РёСЏ: </td>
     <td><input class="longinput" type="text" name="SurName" <? echo 'value="'.$UserArray['SurName'].'"' ?> ></td>
   </tr>
   <tr>
-    <td>Имя:</td>
+    <td>РРјСЏ:</td>
     <td><input class="longinput" type="text" name="FirstName" <? echo 'value="'.$UserArray['FirstName'].'"' ?> ></td>
   </tr>
   <tr>
-    <td>E-Mail адрес: </td>
+    <td>E-Mail Р°РґСЂРµСЃ: </td>
     <td><input class="longinput" type="text" name="EMail" <? echo 'value="'.$UserArray['EMail'].'"' ?>></td>
   </tr>
   <tr>
-    <td>Домашняя страница: </td>
+    <td>Р”РѕРјР°С€РЅСЏСЏ СЃС‚СЂР°РЅРёС†Р°: </td>
     <td><input class="longinput" type="text" name="HomePage" <? echo 'value="'.$UserArray['HomePage'].'"' ?>></td>
   </tr>
   <tr>
-    <td>ICQ-номер: </td>
+    <td>ICQ-РЅРѕРјРµСЂ: </td>
     <td><input class="longinput" type="text" name="ICQ" <? echo 'value="'.$UserArray['ICQ'].'"' ?> ></td>
   </tr>
   <tr>
-    <td>id VKontakte (номер профиля): </td>
+    <td>id VKontakte (РЅРѕРјРµСЂ РїСЂРѕС„РёР»СЏ): </td>
     <td><input class="longinput" type="text" name="VKontakte" <? echo 'value="'.$UserArray['vkontakte'].'"' ?> ></td>
   </tr>
   <tr>
-    <td>№ учебной группы: </td>
+    <td>в„– СѓС‡РµР±РЅРѕР№ РіСЂСѓРїРїС‹: </td>
     <td><? echoGroupSelect($UserArray['GroupId']); ?></td>
   </tr>
   <tr>
-    <td>Город: </td>
+    <td>Р“РѕСЂРѕРґ: </td>
     <td><input class="longinput" type="text" name="City" <? echo 'value="'.$UserArray['City'].'"' ?> ></td>
   </tr>
   <tr>
-    <td>Дата рождения: </td>
+    <td>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ: </td>
     <td>
       <select name="BirthDay">
         <option value="0">---</option>
@@ -165,38 +165,38 @@ else {
     </td>
   </tr>
   <tr>
-    <td>Ваш пол:</td>
+    <td>Р’Р°С€ РїРѕР»:</td>
     <td>
       <select class="longselect" name="Gender">
-          <option value="1" <? if($UserArray['Gender'] == 1) echo 'selected="selected"'; ?>>Мужской</option>
-          <option value="2" <? if($UserArray['Gender'] == 2) echo 'selected="selected"'; ?>>Женский</option>
+          <option value="1" <? if($UserArray['Gender'] == 1) echo 'selected="selected"'; ?>>РњСѓР¶СЃРєРѕР№</option>
+          <option value="2" <? if($UserArray['Gender'] == 2) echo 'selected="selected"'; ?>>Р–РµРЅСЃРєРёР№</option>
       </select>
     </td>
   </tr>
   <tr>
-    <td>Раздел по умолчанию:</td>
+    <td>Р Р°Р·РґРµР» РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ:</td>
     <td><? echoSemestrNamesSelect($UserArray['SemestrId']); ?></td>
   </tr>
   <tr>
-    <td>Факультет: </td>
+    <td>Р¤Р°РєСѓР»СЊС‚РµС‚: </td>
     <td><? echoFacultSelect($UserArray['FacultId']); ?></td>
   </tr>
   <tr>
-    <td>Специальность: </td>
+    <td>РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ: </td>
     <td><? echoSpecialitySelect($UserArray['FacultId'], $UserArray['SpecId']); ?></td>
   </tr>
   <tr>
-    <td>Аватар: </td>
+    <td>РђРІР°С‚Р°СЂ: </td>
     <td><input class="longinput" type="file" name="Avatar"></td>
   </tr>
 </tbody>
 </table>
 <?
   if(isset($Login)) {
-    echo '<input type="submit" value="Сохранить">';
+    echo '<input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ">';
   }
   else {
-    echo '<input type="submit" value="Зарегистрироваться">';
+    echo '<input type="submit" value="Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ">';
   }
 ?>
 </form>
