@@ -1,14 +1,15 @@
 <?php 
-if(isset($_REQUEST['id']))
-  $Title = 'Редактировать новость';
-else
-  $Title = "Добавить новость";
+if (isset($_REQUEST['id'])) {
+    $Title = 'Редактировать новость';
+} else {
+    $Title = "Добавить новость";
+}
 
 include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?> 
 <!-- Body --> 
-<? echo "<h1>$Title</h1>"; ?>
+<?php echo "<h1>$Title</h1>"; ?>
 
-<?
+<?php1
   if (isset($_REQUEST['SaveNewContent'])) {
     if (!isset($_REQUEST['id'])) {
       mysql_query(
@@ -39,17 +40,23 @@ include($_SERVER["DOCUMENT_ROOT"]."/Design/beforebody.php") ?>
   }
 ?>
 
+<?php
+  if (isset($_COOKIE['login'])) {
+?>
 <form method="post">
-  <? if(isset($_REQUEST['id'])): ?>
-    <input name="id" type="hidden" value="<? echo $NewsArray['id'] ?>">
-  <? endif; ?>
+  <?php if(isset($_REQUEST['id'])): ?>
+    <input name="id" type="hidden" value="<?php echo $NewsArray['id'] ?>">
+  <?php endif; ?>
   <input name="SaveNewContent" type="hidden" value="true">
   Заголовок
-  <input type="text" name="title" class="longinput" value="<? echo $NewsArray['Title'] ?>">
+  <input type="text" name="title" class="longinput" value="<?php echo $NewsArray['Title'] ?>">
   Описание
-  <textarea name="Message" class="high"><? echo $NewsArray['Message']; ?></textarea>
+  <textarea name="Message" class="high"><?php echo $NewsArray['Message']; ?></textarea>
   <input type="submit" value="Сохранить">
-</form>
+</form> 
+<?php } else { ?>
+  Залогиньтесь для добавления новости.
+<?php } ?>
 
 <!-- /Body -->
 <?php include($_SERVER["DOCUMENT_ROOT"]."/Design/afterbody.php")?>

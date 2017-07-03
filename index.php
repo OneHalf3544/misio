@@ -17,7 +17,7 @@
 <? endif; ?>
 </div>
 
-<div class="titleLine">Последние новости  [ <a href="/newsmaker.php">Добавить новость</a> ]</div>
+<div class="titleLine">Последние новости<?php if (isset($_COOKIE['login'])) { ?> [ <a href="/newsmaker.php">Добавить новость</a> ]<?php } ?></div>
 
 <? include("news.php") ?>
 

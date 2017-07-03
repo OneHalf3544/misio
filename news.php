@@ -22,19 +22,21 @@ for (;$NewsArray = mysql_fetch_assoc($Res);):
   $Comments_URL = '/oneofmaterial.php?TypeOfMat=News&NMaterial='.$NewsArray['id'];
   // Далее следует кусок html-кода ?>
   <div class="matBlock">
-    <h2 class="title"><a href="<? echo $Comments_URL ?>"><? echo $NewsArray['Title'] ?></a> 
-      <a class="editlink" href="/newsmaker.php?id=<? echo $NewsArray['id'] ?>">[Редактировать]</a></h2>
+    <h2 class="title"><a href="<?php echo $Comments_URL ?>"><?php echo $NewsArray['Title'] ?></a> 
+      <?php if (isset($_COOKIE['login'])) { ?>
+        <a class="editlink" href="/newsmaker.php?id=<?php echo $NewsArray['id'] ?>">[Редактировать]</a>
+      <?php } ?></h2>
     <div class="content">
-      <div class="Message"><? echo add_p_Tag($NewsArray['Message']) ?></div>
+      <div class="Message"><?php echo add_p_Tag($NewsArray['Message']) ?></div>
       <div class="Details">
-        Просмотров: <? echo $NewsArray['Views'] ?> 
-        | Добавил: <a href="<? echo $Profile ?>"><? echo $NewsArray['Author'] ?></a> 
-        | Дата: <span title=""><? echo $dateofadding ?></span> 
-        | <a href="<? echo $Comments_URL ?>">Комментарии (<? echo $Comments_num ?>)</a>
+        Просмотров: <?php echo $NewsArray['Views'] ?> 
+        | Добавил: <a href="<?php echo $Profile ?>"><?php echo $NewsArray['Author'] ?></a> 
+        | Дата: <span title=""><?php echo $dateofadding ?></span> 
+        | <a href="<?php echo $Comments_URL ?>">Комментарии (<?php echo $Comments_num ?>)</a>
       </div>
     </div>
   </div>
-<? endfor;
+<?php endfor;
 
 echo $PageSelector;
 ?>
